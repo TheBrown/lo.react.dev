@@ -107,5 +107,8 @@
   "lint-staged": {
     "*.{js,ts,jsx,tsx,css}": "yarn prettier",
     "src/**/*.md": "yarn fix-headings"
+  },
+  "resolutions": {
+    "@types/react": "18.0.9"
   }
 }
