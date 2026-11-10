@@ -30,7 +30,7 @@ To display an input, render the [built-in browser `<input>`](https://developer.m
 
 #### Props {/*props*/}
 
-`<input>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<input>` supports all [common element props.](/reference/react-dom/components/common#common-props)
 
 <Canary>
 
