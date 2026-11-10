@@ -1,24 +1,24 @@
 ---
-title: "Built-in React Components"
+title: "Component ທີ່ມີໃຫ້ໃນ React"
 ---
 
 <Intro>
 
-React exposes a few built-in components that you can use in your JSX.
+React ມີ component ພື້ນຖານບາງຢ່າງໃຫ້ທ່ານນຳໄປໃຊ້ໃນ JSX ໄດ້.
 
 </Intro>
 
 ---
 
-## Built-in components {/*built-in-components*/}
+## Component ພື້ນຖານ {/*built-in-components*/}
 
-* [`<Fragment>`](/reference/react/Fragment), alternatively written as `<>...</>`, lets you group multiple JSX nodes together.
-* [`<Profiler>`](/reference/react/Profiler) lets you measure rendering performance of a React tree programmatically.
-* [`<Suspense>`](/reference/react/Suspense) lets you display a fallback while the child components are loading.
-* [`<StrictMode>`](/reference/react/StrictMode) enables extra development-only checks that help you find bugs early.
+* [`<Fragment>`](/reference/react/Fragment) ຫຼືຂຽນແບບຫຍໍ້ວ່າ `<>...</>` ຊ່ວຍຈັດກຸ່ມ JSX node ຫຼາຍອັນເຂົ້າດ້ວຍກັນ.
+* [`<Profiler>`](/reference/react/Profiler) ຊ່ວຍວັດປະສິດທິພາບການ render ຂອງ React tree ຜ່ານ code.
+* [`<Suspense>`](/reference/react/Suspense) ຊ່ວຍສະແດງ UI ສຳຮອງລະຫວ່າງທີ່ component ລູກກຳລັງໂຫຼດ.
+* [`<StrictMode>`](/reference/react/StrictMode) ເປີດການກວດສອບເພີ່ມເຕີມໃນຂະນະພັດທະນາ ເພື່ອຊ່ວຍຄົ້ນພົບ bug ໄດ້ໄວຂຶ້ນ.
 
 ---
 
-## Your own components {/*your-own-components*/}
+## Component ທີ່ທ່ານສ້າງເອງ {/*your-own-components*/}
 
-You can also [define your own components](/learn/your-first-component) as JavaScript functions.
+ທ່ານຍັງສາມາດ [ສ້າງ component ຂອງທ່ານເອງ](/learn/your-first-component) ໂດຍໃຊ້ JavaScript function.
