@@ -7,8 +7,8 @@ This repo contains the source code and documentation powering [lo.react.dev](htt
 ### Prerequisites
 
 1. Git
-1. Node: any 12.x version starting with v12.0.0 or greater
-1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. Node.js v24 or later
+1. Yarn Classic: See [Yarn Classic installation](https://classic.yarnpkg.com/en/docs/install/)
 1. A fork of the repo (for any contributions)
 1. A clone of the [lo.react.dev repo](https://github.com/reactjs/lo.react.dev) on your local machine
 
@@ -39,8 +39,8 @@ The documentation is divided into several sections with a different tone and pur
 1. Follow the ["Running locally"](#running-locally) instructions
 1. Save the files and check in the browser
   1. Changes to React components in `src` will hot-reload
-  1. Changes to markdown files in `content` will hot-reload
-  1. If working with plugins, you may need to remove the `.cache` directory and restart the server
+  1. Changes to Markdown files in `src/content` will hot-reload
+  1. If working with plugins, you may need to remove the `node_modules/.cache/react-docs-mdx` directory and restart the server
 
 ### Test the change
 
