@@ -177,11 +177,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 | "replace with `5`" | `0` (unused) | `5` |
 | `n => n + 1` | `5` | `5 + 1 = 6` |
 
-<<<<<<< HEAD
 React ເກັບ `6` ເປັນຜົນລັບສຸດທ້າຍ ແລະ return ຈາກ `useState`.
-=======
-React stores `6` as the final result and returns it from `useState`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Note>
 

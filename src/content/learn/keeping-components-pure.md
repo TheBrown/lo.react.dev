@@ -27,7 +27,6 @@ title: ເຮັດໃຫ້ Components Pure
 
 ພິຈາລະນາສູດຄະນິດສາດນີ້: <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>.
 
-<<<<<<< HEAD
 ຖ້າ <Math><MathI>x</MathI> = 2</Math> ແລ້ວ <Math><MathI>y</MathI> = 4</Math>. ສະເໝີ. 
 
 ຖ້າ <Math><MathI>x</MathI> = 3</Math> ແລ້ວ <Math><MathI>y</MathI> = 6</Math>. ສະເໝີ. 
@@ -35,15 +34,6 @@ title: ເຮັດໃຫ້ Components Pure
 ຖ້າ <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> ບາງເທື່ອຈະບໍ່ເປັນ <Math>9</Math> ຫຼື <Math>–1</Math> ຫຼື <Math>2.5</Math> ຂຶ້ນກັບຊ່ວງເວລາຂອງວັນ ຫຼື ສະຖານະການຂອງຕະຫຼາດຫຸ້ນ. 
 
 ຖ້າ <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> ແລະ <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> ຈະເປັນ <Math>6</Math>  _ຢູ່ສະເໝີ_. 
-=======
-If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always.
-
-If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always.
-
-If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market.
-
-If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ຖ້າເຮົາເອົາເຂົ້າເປັນຟັງຊັ່ນ JavScript, ໜ້າຕາຈະປະມານນີ້:
 
@@ -85,19 +75,11 @@ export default function App() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 ເມື່ອທ່ານສົ່ງ `drinker={2}` ຫາ `Recipe`. ມັນຈະ return JSX ທີ່ປະກອບມີ `2 cups of water`. ສະເໝີ.
-=======
-When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ຖ້າທ່ານສົ່ງ `drinkers={4}`, ມັນຈະ return JSX ທີ່ປະກອບມີ `4 cups of water`. ສະເໝີ.
 
-<<<<<<< HEAD
 ຄືກັບສູດຄະນິດສາດ.
-=======
-Just like a math formula.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ທ່ານສາມາດຄິດວ່າ component ຂອງທ່ານເປັນສູດອາຫານ: ຖ້າທ່ານເຮັດຕາມ ແລະ ບໍ່ເພີ່ມສ່ວນປະສົມໃໝ່ລະຫວ່າງຂັ້ນຕອນການເຮັດອາຫານ, ທ່ານຈະໄດ້ອາຫານຈານເກົ່າທຸກເທື່ອ. "ຈານ" ເປັນ JSX ທີ່ component ເຮັດໜ້າທີ່ຕອບສະໜອງຕໍ່ React ເພື່ອ [ສະແດງຜົນ.](/learn/render-and-commit)
 
@@ -233,7 +215,6 @@ export default function TeaGathering() {
 
 <Recap>
 
-<<<<<<< HEAD
 * Component ຕ້ອງ pure, ໝາຍຄວາມວ່າ:
   * **ມັນຄິດເຖິງເລື່ອງຂອງໂຕເອງ.** ບໍ່ຄວນປ່ຽນແປງ object ຫຼື ຕົວແປໃດໆທີ່ມີຢູ່ກ່ອນການ render.
   * **input ດຽວກັນ, output ດຽວກັນ.** ເມື່ອພິຈາລະນາ input ດຽວກັນ, component ຄວນ return JSX ດຽວກັນສະເໝີ.
@@ -241,15 +222,6 @@ export default function TeaGathering() {
 * ທ່ານບໍ່ຄວນ mutate input ໃດໆທີ່ component ຂອງທ່ານໃຊ້ສຳລັບການ render. ຊື່ງລວມ prop, state ແລະ context. ເພື່ອອັບເດດໜ້າຈໍ, ["set" state](/learn/state-a-components-memory) ແທນການ mutate object ທີ່ມີຢູ່ກ່ອນ.
 * ພະຍາຍາມສະແດງ logic ຂອງ component ທ່ານໃນ JSX ທີ່ທ່ານ return. ເມື່ອທ່ານຕ້ອງການ "ປ່ຽນແປງສິ່ງ", ທ່ານມັກຈະຕ້ອງເຮັດ event handler. ເປັນທາງເລືອກສຸດທ້າຍ, ທ່ານສາມາດໃຊ້ `useEffect`
 * ການຂຽນຟັງຊັ່ນ pure ຕ້ອງອາໄສການເຝິກຊ້ອມໜ້ອຍໜຶ່ງ, ແຕ່ຈະປົດລ໋ອກພະລັງຂອງ React paradigm.
-=======
-* A component must be pure, meaning:
-  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
-  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX.
-* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
-* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
-* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
-* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 </Recap>
 

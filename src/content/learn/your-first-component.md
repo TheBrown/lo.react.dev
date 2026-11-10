@@ -163,17 +163,10 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ```html
 <section>
-<<<<<<< HEAD
   <h1>ນັກວິທະຍາສາດທີ່ນ່າປະຫຼາດໃຈ</h1>
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
-=======
-  <h1>Amazing scientists</h1>
-  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
-  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 </section>
 ```
 
@@ -218,11 +211,7 @@ function Profile() {
 
 #### Components ທັງໝົດລົງໄປ {/*components-all-the-way-down*/}
 
-<<<<<<< HEAD
 ແອັບພິເຄຊັ່ນ React ຂອງທ່ານເລີ່ມຕົ້ນດ້ວຍ "root" component. ສ່ວນຫຼາຍ, ມັນຖືກສ້າງໂດຍອັດຕະໂນມັດຕອນທ່ານສ້າງ project ໃໝ່. ຕົວຢ່າງ, ຖ້າທ່ານເຫັນ [CodeSandbox](https://codesandbox.io/) ຫຼື [ສ້າງແອັບ React](https://create-react-app.dev/), root component ຖືກປະກາດໃນ `src/App.js`. ຖ້າທ່ານໃຊ້ framework, [Next.js](https://nextjs.org/), root component ຖືກປະກາດໃນ `pages/index.js`. ໃນຕົວຢ່າງນີ້, ທ່ານໄດ້ export root component.
-=======
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or if you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
->>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 ແອັບ React ສ່ວນຫຼາຍໃຊ້ compent ທັງໝົດລົງໄປ. ນີ້ໝາຍຄວາມວ່າທ່ານບໍ່ພຽງຈະໃຊ້ຊີ້ນສ່ວນ component ທີ່ສາມາດນຳໃຊ້ໄດ້ໃໝ່ເຊັ່ນ ປຸ່ມກົດ ເທົ່ານັ້ນ, ແຕ່ສຳລັບຊີ້ນສ່ວນທີ່ໃຫຍ່ຂຶ້ນເຊັ່ນ sidebars, list ແລະ ໃນທີ່ສຸດ, ໝົດ page! Component ເປັນວິທີທີ່ສະດວກໃນການຈັດລະບຽບ code UI ແລະ markup, ເຖິງວ່າບາງ component ແມ່ນໃຊ້ໄດ້ພຽງເທື່ອດຽວ. 
 

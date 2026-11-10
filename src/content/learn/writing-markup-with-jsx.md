@@ -69,17 +69,10 @@ JSX ແລະ React ເປັນສອງຢ່າງທີ່ແຍກກັນ
 ສົມມຸດວ່າທ່ານມີ HTML ບາງສ່ວນ (ຖືກຕ້ອງຄົບຖ້ວນ):
 
 ```html
-<<<<<<< HEAD
 <h1>Todos ຂອງ Hedy Lamarr</h1>
 <img 
   src="https://i.imgur.com/yXOvdOSs.jpg" 
   alt="Hedy Lamarr" 
-=======
-<h1>Hedy Lamarr's Todos</h1>
-<img
-  src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-  alt="Hedy Lamarr"
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
   class="photo"
 >
 <ul>
@@ -108,17 +101,10 @@ export default function TodoList() {
 export default function TodoList() {
   return (
     // This doesn't quite work!
-<<<<<<< HEAD
     <h1>Todos ຂອງ Hedy Lamarr</h1>
     <img 
       src="https://i.imgur.com/yXOvdOSs.jpg" 
       alt="Hedy Lamarr" 
-=======
-    <h1>Hedy Lamarr's Todos</h1>
-    <img
-      src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-      alt="Hedy Lamarr"
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
       class="photo"
     >
     <ul>
@@ -154,17 +140,10 @@ img { height: 90px }
 
 ```js {1,11}
 <div>
-<<<<<<< HEAD
   <h1>Todos ຂອງ Hedy Lamarr</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
-=======
-  <h1>Hedy Lamarr's Todos</h1>
-  <img
-    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-    alt="Hedy Lamarr"
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     class="photo"
   >
   <ul>
@@ -178,17 +157,10 @@ img { height: 90px }
 
 ```js {1,11}
 <>
-<<<<<<< HEAD
   <h1>Todos ຂອງ Hedy Lamarr</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
-=======
-  <h1>Hedy Lamarr's Todos</h1>
-  <img
-    src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-    alt="Hedy Lamarr"
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     class="photo"
   >
   <ul>
@@ -262,19 +234,11 @@ JSX ປ່ຽນເປັນ JavaScript ແລະ attribute ທີ່ຂຽນ�
 export default function TodoList() {
   return (
     <>
-<<<<<<< HEAD
       <h1>Todos ຂອງ Hedy Lamarr</h1>
       <img 
         src="https://i.imgur.com/yXOvdOSs.jpg" 
         alt="Hedy Lamarr" 
         className="photo" 
-=======
-      <h1>Hedy Lamarr's Todos</h1>
-      <img
-        src="https://react.dev/images/docs/scientists/yXOvdOSs.jpg"
-        alt="Hedy Lamarr"
-        className="photo"
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
       />
       <ul>
         <li>ປະດິດສັນຍານໄຟຈາລະຈອນໃໝ່</li>

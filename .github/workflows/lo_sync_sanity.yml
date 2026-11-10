@@ -18,7 +18,7 @@ jobs:
       - name: Reject unresolved Git merge-conflict markers
         shell: bash
         run: |
-          if git grep -n -E '^(<<<<<<< |=======|>>>>>>> )' -- .; then
+          if git grep -n -E '^(<<<<<<< |=======$|>>>>>>> )' -- .; then
             echo "::error::Unresolved merge conflict markers detected"
             exit 1
           fi
@@ -29,18 +29,21 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const cp = require('child_process');
-          const paths = [
-            'src/content/learn/index.md',
-            'src/content/learn/tutorial-tic-tac-toe.md',
-          ];
+          const paths = cp.execFileSync('git', [
+            'ls-tree','-r','--name-only','origin/main','--','src/content/learn/'
+          ], {encoding:'utf8'}).trim().split(String.fromCharCode(10)).filter(Boolean);
+          let scanned = 0;
           for (const path of paths) {
             const previous = cp.execFileSync('git', ['show', 'origin/main:' + path], {encoding:'utf8'});
             const current = fs.readFileSync(path, 'utf8');
             const count = s => (s.match(/[\u0e80-\u0eff]/g) || []).length;
             const before = count(previous), after = count(current);
+            if (!before) continue;
+            scanned++;
             console.log(path + ': baseline ' + before + ', current ' + after + ' Lao characters');
             if (after < before) process.exitCode = 1;
           }
+          console.log('Checked ' + scanned + ' previously translated Learn React pages');
           NODE
 
       - name: Parse key project JSON files

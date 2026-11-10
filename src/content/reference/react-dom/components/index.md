@@ -35,7 +35,7 @@ They are special in React because passing the `value` prop to them makes them *[
 
 ## Resource and Metadata Components {/*resource-and-metadata-components*/}
 
-These bulit-in browser components let you load external resources or annotate the document with metadata:
+These built-in browser components let you load external resources or annotate the document with metadata:
 
 * [`<img>`](/reference/react-dom/components/img)
 * [`<link>`](/reference/react-dom/components/link)
@@ -164,15 +164,10 @@ Similar to the [DOM standard,](https://developer.mozilla.org/en-US/docs/Web/API/
 
 ### Custom HTML elements {/*custom-html-elements*/}
 
-If you render a tag with a dash, like `<my-element>`, React will assume you want to render a [custom HTML element.](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) In React, rendering custom elements works differently from rendering built-in browser tags:
-
-- All custom element props are serialized to strings and are always set using attributes.
-- Custom elements accept `class` rather than `className`, and `for` rather than `htmlFor`.
+If you render a tag with a dash, like `<my-element>`, React will assume you want to render a [custom HTML element.](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
 
 If you render a built-in browser HTML element with an [`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is) attribute, it will also be treated as a custom element.
 
-<<<<<<< HEAD
-=======
 #### Setting values on custom elements {/*attributes-vs-properties*/}
 
 Custom elements have two methods of passing data into them:
@@ -290,17 +285,16 @@ export function App() {
 
 </Sandpack>
 
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 <Note>
 
-[A future version of React will include more comprehensive support for custom elements.](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)
+Events are case-sensitive and support dashes (`-`). Preserve the casing of the event and include all dashes when listening for custom element's events:
 
-You can try it by upgrading React packages to the most recent experimental version:
-
-- `react@experimental`
-- `react-dom@experimental`
-
-Experimental versions of React may contain bugs. Don't use them in production.
+```jsx
+// Listens for `say-hi` events
+<my-element onsay-hi={console.log}></my-element>
+// Listens for `sayHi` events
+<my-element onsayHi={console.log}></my-element>
+```
 
 </Note>
 ---
