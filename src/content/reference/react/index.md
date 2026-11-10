@@ -1,33 +1,34 @@
 ---
-title: React Reference Overview
+title: ພາບລວມຄູ່ມືອ້າງອີງ React
 ---
 
 <Intro>
-This section provides detailed reference documentation for working with React. For an introduction to React, please visit the [Learn](/learn) section.
+
+ພາກນີ້ເປັນຄູ່ມືອ້າງອີງທີ່ອະທິບາຍລາຍລະອຽດການໃຊ້ງານ React. ຖ້າທ່ານຫາກໍ່ເລີ່ມຮຽນ React, ຂໍແນະນຳໃຫ້ອ່ານພາກ [ຮຽນຮູ້ React](/learn) ກ່ອນ.
 
 </Intro>
 
-Our The React reference documentation is broken down into functional subsections:
+ຄູ່ມືອ້າງອີງ React ແບ່ງອອກເປັນຫົວຂໍ້ຕາມການໃຊ້ງານດັ່ງນີ້:
 
 ## React {/*react*/}
 
-Programmatic React features:
+ຄວາມສາມາດຂອງ React ທີ່ສາມາດໃຊ້ຜ່ານ code:
 
-* [Hooks](/reference/react/hooks) - Use different React features from your components.
-* [Components](/reference/react/components) - Documents built-in components that you can use in your JSX.
-* [APIs](/reference/react/apis) - APIs that are useful for defining components.
-* [Directives](/reference/react/directives) - Provide instructions to bundlers compatible with React Server Components.
+* [Hooks](/reference/react/hooks) - ຊ່ວຍໃຫ້ component ຂອງທ່ານໃຊ້ຄວາມສາມາດຕ່າງໆ ຂອງ React.
+* [Components](/reference/react/components) - ອະທິບາຍ component ທີ່ React ມີໃຫ້ ແລະ ສາມາດນຳໄປໃຊ້ໃນ JSX ໄດ້.
+* [APIs](/reference/react/apis) - API ທີ່ຊ່ວຍໃນການສ້າງ ແລະ ກຳນົດ component.
+* [Directives](/reference/react/directives) - ຄຳສັ່ງສຳລັບ bundler ທີ່ຮອງຮັບ React Server Components.
 
 ## React DOM {/*react-dom*/}
 
-React-dom contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
+React DOM ມີຄວາມສາມາດທີ່ໃຊ້ໄດ້ສະເພາະກັບແອັບເວັບທີ່ເຮັດວຽກໃນສະພາບແວດລ້ອມ DOM ຂອງ browser. ພາກນີ້ແບ່ງອອກເປັນ:
 
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
+* [Hooks](/reference/react-dom/hooks) - Hooks ສຳລັບແອັບເວັບທີ່ເຮັດວຽກໃນ DOM ຂອງ browser.
+* [Components](/reference/react-dom/components) - React ຮອງຮັບ HTML ແລະ SVG component ທີ່ browser ມີໃຫ້.
+* [APIs](/reference/react-dom) - ວິທີການຕ່າງໆ ໃນ package `react-dom` ທີ່ໃຊ້ໄດ້ສະເພາະໃນແອັບເວັບ.
+* [Client APIs](/reference/react-dom/client) - API ຈາກ `react-dom/client` ສຳລັບ render React component ຢູ່ຝັ່ງ client (ໃນ browser).
+* [Server APIs](/reference/react-dom/server) - API ຈາກ `react-dom/server` ສຳລັບ render React component ເປັນ HTML ຢູ່ຝັ່ງ server.
 
 ## Legacy APIs {/*legacy-apis*/}
 
-* [Legacy APIs](/reference/react/legacy) - Exported from the `react` package, but not recommended for use in newly written code.
+* [Legacy APIs](/reference/react/legacy) - API ທີ່ export ຈາກ package `react` ແຕ່ບໍ່ແນະນຳໃຫ້ໃຊ້ໃນ code ທີ່ຂຽນຂຶ້ນໃໝ່.
