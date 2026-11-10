@@ -6,7 +6,7 @@ canary: true
 
 <Canary>
 
-`'use client'` is needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+`'use client'` is needed only if you're [using React Server Components](/learn/creating-a-react-app#full-stack-frameworks) or building a library compatible with them.
 </Canary>
 
 
@@ -41,7 +41,7 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
-When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) will treat the module import as a boundary between server-run and client-run code.
+When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/creating-a-react-app#full-stack-frameworks) will treat the module import as a boundary between server-run and client-run code.
 
 As dependencies of `RichTextEditor`, `formatDate` and `Button` will also be evaluated on the client regardless of whether their modules contain a `'use client'` directive. Note that a single module may be evaluated on the server when imported from server code and on the client when imported from client code.
 
