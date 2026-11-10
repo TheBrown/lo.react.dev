@@ -5,15 +5,8 @@ title: <Fragment> (<>...</>)
 <Intro>
 
 `<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
-<Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
-=======
 Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements.
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js
 <>
@@ -37,40 +30,7 @@ Wrap elements in `<Fragment>` to group them together in situations where you nee
 #### Props {/*props*/}
 
 - **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-- <CanaryBadge />  **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
-
-### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
-
-When you pass a ref to a fragment, React provides a `FragmentInstance` object with methods for interacting with the DOM nodes wrapped by the fragment:
-
-**Event handling methods:**
-- `addEventListener(type, listener, options?)`: Adds an event listener to all first-level DOM children of the Fragment.
-- `removeEventListener(type, listener, options?)`: Removes an event listener from all first-level DOM children of the Fragment.
-- `dispatchEvent(event)`: Dispatches an event to a virtual child of the Fragment to call any added listeners and can bubble to the DOM parent.
-
-**Layout methods:**
-- `compareDocumentPosition(otherNode)`: Compares the document position of the Fragment with another node.
-  - If the Fragment has children, the native `compareDocumentPosition` value is returned.
-  - Empty Fragments will attempt to compare positioning within the React tree and include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-  - Elements that have a different relationship in the React tree and DOM tree due to portaling or other insertions are `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-- `getClientRects()`: Returns a flat array of `DOMRect` objects representing the bounding rectangles of all children.
-- `getRootNode()`: Returns the root node containing the Fragment's parent DOM node.
-
-**Focus management methods:**
-- `focus(options?)`: Focuses the first focusable DOM node in the Fragment. Focus is attempted on nested children depth-first.
-- `focusLast(options?)`: Focuses the last focusable DOM node in the Fragment. Focus is attempted on nested children depth-first.
-- `blur()`: Removes focus if `document.activeElement` is within the Fragment.
-
-**Observer methods:**
-- `observeUsing(observer)`: Starts observing the Fragment's DOM children with an IntersectionObserver or ResizeObserver.
-- `unobserveUsing(observer)`: Stops observing the Fragment's DOM children with the specified observer.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
-=======
 - **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 #### Caveats {/*caveats*/}
 
@@ -78,8 +38,6 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 
 * React does not [reset state](/learn/preserving-and-resetting-state) when you go from rendering `<><Child /></>` to `[<Child />]` or back, or when you go from rendering `<><Child /></>` to `<Child />` and back. This only works a single level deep: for example, going from `<><><Child /></></>` to `<Child />` resets the state. See the precise semantics [here.](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)
 
-<<<<<<< HEAD
-=======
 * If you want to pass `ref` to a Fragment, you can't use the `<>...</>` syntax. You have to explicitly import `Fragment` from `'react'` and render `<Fragment ref={yourRef}>...</Fragment>`.
 
 ---
@@ -325,7 +283,6 @@ fragmentRef.current.scrollIntoView();
 * React does not apply event listeners added via `addEventListener` to hidden [`<Activity>`](/reference/react/Activity) trees. When an `Activity` boundary switches from hidden to visible, listeners are applied automatically.
 * Each first-level DOM child of a Fragment with a `ref` gets a `reactFragments` property—a `Set<FragmentInstance>` containing all Fragment instances that own the element. This enables [caching a shared observer](#caching-global-intersection-observer) across multiple Fragments.
 
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 ---
 
 ## Usage {/*usage*/}
@@ -499,8 +456,6 @@ function PostBody({ body }) {
 ```
 
 </Sandpack>
-<<<<<<< HEAD
-=======
 
 ---
 
@@ -1020,10 +975,6 @@ export default function ObservedGroup({
 }
 ```
 
-<<<<<<< HEAD
-The `focus()` method focuses the first focusable element within the Fragment, while `focusLast()` focuses the last focusable element.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
-=======
 ```css
 .page {
   transition: background 0.3s;
@@ -1077,4 +1028,3 @@ export default function Card({ title, className }) {
 </Sandpack>
 
 Multiple `ObservedGroup` components with the same options reuse a single `IntersectionObserver`. When either section scrolls into view, the shared observer fires and uses `reactFragments` to route the entry to the correct callback.
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3

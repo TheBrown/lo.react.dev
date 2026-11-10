@@ -6,11 +6,7 @@ canary: true
 
 <Canary>
 
-<<<<<<< HEAD:src/content/reference/react/use-server.md
-`'use server'` is needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
-=======
 `'use server'` is for use with [React Server Components](/reference/rsc/server-components).
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3:src/content/reference/rsc/use-server.md
 
 </Canary>
 
@@ -92,13 +88,8 @@ Here are supported types for server action arguments:
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 Notably, these are not supported:
-<<<<<<< HEAD
-* React elements, or [JSX](https://react.dev/learn/writing-markup-with-jsx)
-* Functions, including component functions or any other function that is not a server action
-=======
 * React elements, or [JSX](/learn/writing-markup-with-jsx)
 * Functions, including component functions or any other function that is not a Server Action
->>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 * [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
 * Symbols not registered globally, ex. `Symbol('my new symbol')`

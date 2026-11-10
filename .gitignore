@@ -36,8 +36,6 @@ yarn-error.log*
 
 # external fonts
 public/fonts/**/Optimistic_*.woff2
-<<<<<<< HEAD
-=======
 
 # rss
 public/rss.xml
@@ -51,4 +49,3 @@ public/rss.xml
 
 # Generated OG images (scripts/generateOgImages.mjs)
 public/images/og/
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3

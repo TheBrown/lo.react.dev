@@ -10,8 +10,6 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {/*upcoming-conferences*/}
 
-<<<<<<< HEAD
-=======
 ### React Summit US 2026 {/*react-summit-us-2026*/}
 November 17 & 20, 2026. In-person in New York, USA + online (hybrid event)
 
@@ -263,7 +261,6 @@ July 04 & 05, 2024. Bangalore, India (In-person event)
 
 [Website](https://reactnexus.com/) - [Twitter](https://twitter.com/ReactNexus) - [Linkedin](https://www.linkedin.com/company/react-nexus) - [YouTube](https://www.youtube.com/reactify_in)
 
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 ### React Summit 2024 {/*react-summit-2024*/}
 June 14 & 18, 2024. In-person in Amsterdam, Netherlands + remote (hybrid event)
 
@@ -293,8 +290,6 @@ May 15 - 16, 2024. In-person in Henderson, NV, USA + remote
 
 [Website](https://conf.react.dev) - [Twitter](https://twitter.com/reactjs)
 
-<<<<<<< HEAD
-=======
 ### React Native Connection 2024 {/*react-native-connection-2024*/}
 April 23, 2024. In-person in Paris, France
 
@@ -305,7 +300,6 @@ April 19 - 20, 2024. In-person in Miami, FL, USA
 
 [Website](https://reactmiami.com/) - [Twitter](https://twitter.com/ReactMiamiConf)
 
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 ### Epic Web Conf 2024 {/*epic-web-2024*/}
 April 10 - 11, 2024. In-person in Park City, UT, USA
 

@@ -10,8 +10,6 @@ This blog is the official source for the updates from the React team. Anything i
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-=======
 <BlogCard title="React 19.3" date="September 9, 2026" url="/blog/2026/09/09/react-19-3">
 
 React 19.3 adds new features like View Transitions, Fragment Refs, browser(), Trusted Types, and more. In this post ...
@@ -102,7 +100,6 @@ In React Labs posts, we write about projects in active research and development.
 
 </BlogCard>
 
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 <BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
 
 Traditionally, new React features used to only be available at Meta first, and land in the open source releases later. We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final--similar to how Meta uses React internally. We are introducing a new officially supported Canary release channel. It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.

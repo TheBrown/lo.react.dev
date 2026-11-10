@@ -105,8 +105,6 @@
         {
           "title": "<Suspense>",
           "path": "/reference/react/Suspense"
-<<<<<<< HEAD
-=======
         },
         {
           "title": "<Activity>",
@@ -115,7 +113,6 @@
         {
           "title": "<ViewTransition>",
           "path": "/reference/react/ViewTransition"
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
         }
       ]
     },
@@ -124,8 +121,6 @@
       "path": "/reference/react/apis",
       "routes": [
         {
-<<<<<<< HEAD
-=======
           "title": "act",
           "path": "/reference/react/act"
         },
@@ -134,7 +129,6 @@
           "path": "/reference/react/addTransitionType"
         },
         {
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
           "title": "cache",
           "path": "/reference/react/cache",
           "canary": true
@@ -377,8 +371,6 @@
         {
           "title": "renderToString",
           "path": "/reference/react-dom/server/renderToString"
-<<<<<<< HEAD
-=======
         },
         {
           "title": "resume",
@@ -598,7 +590,6 @@
         {
           "title": "'use server'",
           "path": "/reference/rsc/use-server"
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
         }
       ]
     },

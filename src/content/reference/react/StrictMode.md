@@ -44,6 +44,7 @@ Strict Mode enables the following development-only behaviors:
 
 - Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
 - Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
+- Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
 - Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
 #### Props {/*props*/}
@@ -87,6 +88,7 @@ Strict Mode enables the following checks in development:
 
 - Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
 - Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
+- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
 - Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
 **All of these checks are development-only and do not impact the production build.**
@@ -119,6 +121,12 @@ function App() {
 ```
 
 In this example, Strict Mode checks will not run against the `Header` and `Footer` components. However, they will run on `Sidebar` and `Content`, as well as all of the components inside them, no matter how deep.
+
+<Note>
+
+When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+
+</Note>
 
 ---
 
@@ -196,6 +204,9 @@ ul {
   margin: 0;
   list-style-type: none;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 li {
@@ -203,7 +214,6 @@ li {
   border-radius: 6px;
   float: left;
   margin: 5px;
-  margin-bottom: 20px;
   padding: 5px;
   width: 70px;
   height: 100px;
@@ -214,7 +224,7 @@ li {
 
 There is a mistake in the code above. However, it is easy to miss because the initial output appears correct.
 
-This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it: 
+This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it:
 
 <Sandpack>
 
@@ -283,6 +293,9 @@ ul {
   margin: 0;
   list-style-type: none;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 li {
@@ -290,7 +303,6 @@ li {
   border-radius: 6px;
   float: left;
   margin: 5px;
-  margin-bottom: 20px;
   padding: 5px;
   width: 70px;
   height: 100px;
@@ -377,6 +389,9 @@ ul {
   margin: 0;
   list-style-type: none;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 li {
@@ -384,7 +399,6 @@ li {
   border-radius: 6px;
   float: left;
   margin: 5px;
-  margin-bottom: 20px;
   padding: 5px;
   width: 70px;
   height: 100px;
@@ -467,6 +481,9 @@ ul {
   margin: 0;
   list-style-type: none;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 li {
@@ -474,7 +491,6 @@ li {
   border-radius: 6px;
   float: left;
   margin: 5px;
-  margin-bottom: 20px;
   padding: 5px;
   width: 70px;
   height: 100px;
@@ -817,9 +833,8 @@ Without Strict Mode, it was easy to miss that your Effect needed cleanup. By run
 [Read more about implementing Effect cleanup.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 ---
+### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-<<<<<<< HEAD
-=======
 Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
 
 Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
@@ -1227,14 +1242,10 @@ Now on initial mount in StrictMode, the ref callbacks are all setup, cleaned up,
 Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
 
 ---
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 ### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
 React warns if some component anywhere inside a `<StrictMode>` tree uses one of these deprecated APIs:
 
-* [`findDOMNode`](/reference/react-dom/findDOMNode). [See alternatives.](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles) 
-* Legacy context ([`childContextTypes`](/reference/react/Component#static-childcontexttypes), [`contextTypes`](/reference/react/Component#static-contexttypes), and [`getChildContext`](/reference/react/Component#getchildcontext)). [See alternatives.](/reference/react/createContext)
-* Legacy string refs ([`this.refs`](/reference/react/Component#refs)). [See alternatives.](https://reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
+* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
 
 These APIs are primarily used in older [class components](/reference/react/Component) so they rarely appear in modern apps.

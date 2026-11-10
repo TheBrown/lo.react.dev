@@ -53,7 +53,7 @@ Most of the time, `flushSync` can be avoided. Use `flushSync` as last resort.
 
 * `flushSync` can significantly hurt performance. Use sparingly.
 * `flushSync` may force pending Suspense boundaries to show their `fallback` state.
-* `flushSync` may run pending effects and synchronously apply any updates they contain before returning.
+* `flushSync` may run pending Effects and synchronously apply any updates they contain before returning.
 * `flushSync` may flush updates outside the callback when necessary to flush the updates inside the callback. For example, if there are pending updates from a click, React may flush those before flushing the updates inside the callback.
 
 ---
@@ -131,8 +131,6 @@ Without `flushSync`, the print dialog will display `isPrinting` as "no". This is
 Most of the time, `flushSync` can be avoided, so use `flushSync` as a last resort.
 
 </Pitfall>
-<<<<<<< HEAD
-=======
 
 ---
 
@@ -205,4 +203,3 @@ This will allow the current render to finish and schedule another synchronous re
 `flushSync` can significantly hurt performance, but this particular pattern is even worse for performance. Exhaust all other options before calling `flushSync` in a microtask as an escape hatch.
 
 </Pitfall>
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3

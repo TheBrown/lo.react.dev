@@ -1374,13 +1374,8 @@ export default function App() {
 }
 ```
 
-<<<<<<< HEAD
-```js src/ChatRoom.js active
-import { useState, useEffect } from 'react';
-=======
 ```js {expectedErrors: {'react-compiler': [8]}} src/ChatRoom.js active
 import { useEffect } from 'react';
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 export default function ChatRoom({ roomId, createConnection }) {
   useEffect(() => {

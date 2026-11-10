@@ -72,19 +72,9 @@ export function TeamMember({
   personal,
   group,
 }: TeamMemberProps) {
-<<<<<<< HEAD
-  if (name == null || title == null || permalink == null || children == null) {
-    throw new Error(
-      'Expected name, title, permalink, and children for ' + name ??
-        title ??
-        permalink ??
-        'unknown'
-    );
-=======
   if (name == null || title == null || permalink == null) {
     const identifier = name ?? title ?? permalink ?? 'unknown';
     throw new Error(`Expected name, title, and permalink for ${identifier}`);
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
   }
   return (
     <div className="pb-6 sm:pb-10">
@@ -112,13 +102,8 @@ export function TeamMember({
                 <ExternalLink
                   aria-label="React on Twitter"
                   href={`https://twitter.com/${twitter}`}
-<<<<<<< HEAD
-                  className="hover:text-primary dark:text-primary-dark flex flex-row items-center">
-                  <IconTwitter className="pe-1" />
-=======
                   className="hover:text-primary hover:underline dark:text-primary-dark flex flex-row items-center">
                   <IconTwitter className="pe-1" aria-hidden="true" />
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
                   {twitter}
                 </ExternalLink>
               </div>
@@ -134,8 +119,6 @@ export function TeamMember({
                 </ExternalLink>
               </div>
             )}
-<<<<<<< HEAD
-=======
             {bsky && (
               <div className="me-4">
                 <ExternalLink
@@ -147,19 +130,13 @@ export function TeamMember({
                 </ExternalLink>
               </div>
             )}
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
             {github && (
               <div className="me-4">
                 <ExternalLink
                   aria-label={`${name} on GitHub`}
                   href={`https://github.com/${github}`}
-<<<<<<< HEAD
-                  className="hover:text-primary dark:text-primary-dark flex flex-row items-center">
-                  <IconGitHub className="pe-1" /> {github}
-=======
                   className="hover:text-primary hover:underline dark:text-primary-dark flex flex-row items-center">
                   <IconGitHub className="pe-1" aria-hidden="true" /> {github}
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
                 </ExternalLink>
               </div>
             )}
@@ -167,13 +144,8 @@ export function TeamMember({
               <ExternalLink
                 aria-label={`${name}'s personal website`}
                 href={`https://${personal}`}
-<<<<<<< HEAD
-                className="hover:text-primary dark:text-primary-dark flex flex-row items-center">
-                <IconLink className="pe-1" /> {personal}
-=======
                 className="hover:text-primary hover:underline dark:text-primary-dark flex flex-row items-center">
                 <IconLink className="pe-1" aria-hidden="true" /> {personal}
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
               </ExternalLink>
             )}
           </div>

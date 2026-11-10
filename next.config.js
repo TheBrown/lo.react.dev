@@ -12,9 +12,6 @@ const nextConfig = {
     // TODO: Remove after https://github.com/vercel/next.js/issues/49355 is fixed
     appDir: false,
     scrollRestoration: true,
-<<<<<<< HEAD
-    legacyBrowsers: false,
-=======
     reactCompiler: true,
   },
   async rewrites() {
@@ -40,7 +37,6 @@ const nextConfig = {
         },
       ],
     };
->>>>>>> 1207ee36e1c7e3f2737d8f1022015473ffa99adf
   },
   env: {},
   webpack: (config, {dev, isServer, ...options}) => {

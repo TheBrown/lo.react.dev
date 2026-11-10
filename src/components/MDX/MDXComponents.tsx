@@ -94,12 +94,6 @@ const Canary = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="canary">{children}</ExpandableCallout>
 );
 
-<<<<<<< HEAD
-const Blockquote = ({
-  children,
-  ...props
-}: JSX.IntrinsicElements['blockquote']) => {
-=======
 const RC = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="rc">{children}</ExpandableCallout>
 );
@@ -189,7 +183,6 @@ const RSCBadge = ({title}: {title: string}) => (
 );
 
 const Blockquote = ({children, ...props}: HTMLAttributes<HTMLQuoteElement>) => {
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
   return (
     <blockquote
       className="mdx-blockquote py-4 px-8 my-8 shadow-inner-border dark:shadow-inner-border-dark bg-highlight dark:bg-highlight-dark bg-opacity-50 rounded-2xl leading-6 flex relative"

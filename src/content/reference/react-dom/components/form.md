@@ -1,14 +1,6 @@
 ---
 title: "<form>"
-canary: true
 ---
-
-<Canary>
-
-React's extensions to `<form>` are currently only available in React's canary and experimental channels. In stable releases of React, `<form>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-
-</Canary>
-
 
 <Intro>
 
@@ -44,18 +36,14 @@ To create interactive controls for submitting information, render the [built-in 
 
 #### Props {/*props*/}
 
-`<form>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<form>` supports all [common element props.](/reference/react-dom/components/common#common-props)
 
-<<<<<<< HEAD
-[`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): a URL or function. When a URL is passed to `action` the form will behave like the HTML form component. When a function is passed to `action` the function will handle the form submission. The function passed to `action` may be async and will be called with a single argument containing the [form data](https://developer.mozilla.org/en-US/docs/Web/API/FormData) of the submitted form. The `action` prop can be overridden by a `formAction` attribute on a `<button>`, `<input type="submit">`, or `<input type="image">` component.
-=======
 * [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action): A string containing a URL, or a function. If you pass a URL, the form behaves like a standard HTML form. If you pass a function, it handles the submission. See [Handling form submission with an action prop](#handle-form-submission-with-an-action-prop).
   * If you pass a function to `action`, React runs it in a [Transition](/reference/react/useTransition) following [the Action prop pattern](/reference/react/useTransition#exposing-action-props-from-components).
   * The function may be async. React calls it with a single argument containing the [form data](https://developer.mozilla.org/en-US/docs/Web/API/FormData) of the submitted form.
   * A `formAction` prop on a `<button>`, `<input type="submit">`, or `<input type="image">` overrides this `action`.
 * [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method): A string that specifies the HTTP method to use when `action` is a URL. Defaults to `get`.
 * `onSubmit`: An [`Event` handler](/reference/react-dom/components/common#react-event-object) function. Fires when the form is submitted. See [Handling form submission with an event handler](#handle-form-submission-with-an-event-handler).
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 #### Caveats {/*caveats*/}
 
@@ -68,9 +56,6 @@ To create interactive controls for submitting information, render the [built-in 
 
 ### Handling form submission with an event handler {/*handle-form-submission-with-an-event-handler*/}
 
-<<<<<<< HEAD
-Pass a function to the `action` prop of form to run the function when the form is submitted. [`formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) will be passed to the function as an argument so you can access the data submitted by the form. This differs from the conventional [HTML action](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action), which only accepts URLs.
-=======
 Pass a function to the `onSubmit` event handler to run code when the form is submitted. By default, the browser sends the form data to the current URL and refreshes the page. Calling [`e.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) in the event handler overrides this behavior.
 
 If you also pass a function to `action`, React runs it after `onSubmit` unless `onSubmit` calls `e.preventDefault()`.
@@ -119,7 +104,6 @@ When you pass a function to `action`, React:
 * Resets the form's uncontrolled fields when the function succeeds. To keep their values, see [Preserving form values after an Action](#preserve-form-values-after-an-action).
 
 Because the Action runs in a Transition, you can also use [`useActionState`](/reference/react/useActionState) to manage form state and [`useOptimistic`](/reference/react/useOptimistic) for optimistic UI. For [Server Functions](/reference/rsc/server-functions) and progressive enhancement, see [Handling form submission with a Server Function](#handle-form-submission-with-a-server-function).
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 <Sandpack>
 
@@ -138,29 +122,8 @@ export default function Search() {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
-
 </Sandpack>
 
-<<<<<<< HEAD
-### Handle form submission with a Server Action {/*handle-form-submission-with-a-server-action*/}
-
-Render a `<form>` with an input and submit button. Pass a Server Action (a function marked with [`'use server'`](/reference/react/use-server)) to the `action` prop of form to run the function when the form is submitted.
-
-Passing a Server Action to `<form action>` allow users to submit forms without JavaScript enabled or before the code has loaded. This is beneficial to users who have a slow connection, device, or have JavaScript disabled and is similar to the way forms work when a URL is passed to the `action` prop.
-
-You can use hidden form fields to provide data to the `<form>`'s action. The Server Action will be called with the hidden form field data as an instance of [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
-=======
 ---
 
 ### Handling form submission with a Server Function {/*handle-form-submission-with-a-server-function*/}
@@ -168,7 +131,6 @@ You can use hidden form fields to provide data to the `<form>`'s action. The Ser
 A `<form>`'s `action` prop can run a Server Function (a function marked with [`'use server'`](/reference/rsc/use-server)) when the user submits the form. Users can submit that form before JavaScript loads or when JavaScript is disabled. This matches how forms behave when you pass a URL to `action`.
 
 React calls the Server Function with the form's [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) and includes every input with a `name` attribute. To pass additional data, such as an ID from props, see [Passing extra data to an Action](#passing-extra-data-to-an-action).
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```jsx
 import { addComment } from './actions.js';
@@ -251,11 +213,7 @@ function AddToCart({ productId }) {
 }
 ```
 
-<<<<<<< HEAD
-When `<form>` is rendered by a [Server Component](/reference/react/use-client), and a [Server Action](/reference/react/use-server) is passed to the `<form>`'s `action` prop, the form is [progressively enhanced](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement).
-=======
 When the form is submitted, React calls `addProductToCart(formData)`, which calls `addToCart(productId, formData)`.
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 If you also use [`useActionState`](/reference/react/useActionState), the Server Function receives `productId`, `previousState`, and `formData`, in that order. Define that function in a separate file and bind it from the Client Component.
 
@@ -336,17 +294,6 @@ export async function submitForm(formData) {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 To learn more about the `useFormStatus` Hook, see the [reference documentation](/reference/react-dom/hooks/useFormStatus).
@@ -404,15 +351,10 @@ export default function App() {
     { text: 'Hello there!', sending: false, key: 1 }
   ]);
   async function sendMessage(formData) {
-<<<<<<< HEAD
-    const sentMessage = await deliverMessage(formData.get("message"));
-    setMessages([...messages, { text: sentMessage }]);
-=======
     const sentMessage = await deliverMessage(formData.get('message'));
     startTransition(() => {
       setMessages((messages) => [...messages, { text: sentMessage }]);
     });
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
   }
   return <Thread messages={messages} sendMessage={sendMessage} />;
 }
@@ -426,29 +368,11 @@ export async function deliverMessage(message) {
 }
 ```
 
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
-
 </Sandpack>
 
-<<<<<<< HEAD
-[//]: # 'Uncomment the next line, and delete this line after the `useOptimistic` reference documentatino page is published'
-[//]: # 'To learn more about the `useOptimistic` Hook see the [reference documentation](/reference/react/hooks/useOptimistic).'
-=======
 To learn more about the `useOptimistic` Hook, see the [reference documentation](/reference/react/useOptimistic).
 
 ---
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ### Handling form submission errors {/*handling-form-submission-errors*/}
 
@@ -479,15 +403,9 @@ export default function Search() {
 ```json package.json hidden
 {
   "dependencies": {
-<<<<<<< HEAD
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0",
-=======
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
     "react-error-boundary": "4.0.3"
   },
   "main": "/index.js"
@@ -500,31 +418,17 @@ export default function Search() {
 
 Displaying a form submission error message before the JavaScript bundle loads for progressive enhancement requires that:
 
-<<<<<<< HEAD
-1. `<form>` be rendered by a [Server Component](/reference/react/use-client)
-1. the function passed to the `<form>`'s `action` prop be a [Server Action](/reference/react/use-server)
-1. the `useFormState` Hook be used to display the error message
-
-`useFormState` takes two parameters: a [Server Action](/reference/react/use-server) and an initial state. `useFormState` returns two values, a state variable and an action. The action returned by `useFormState` should be passed to the `action` prop of the form. The state variable returned by `useFormState` can be used to displayed an error message. The value returned by the [Server Action](/reference/react/use-server) passed to `useFormState` will be used to update the state variable.
-=======
 1. `<form>` be rendered by a [Client Component](/reference/rsc/use-client)
 1. the function passed to the `<form>`'s `action` prop be a [Server Function](/reference/rsc/server-functions)
 1. the [`useActionState`](/reference/react/useActionState) Hook be used to display the error message
 
 Define the Server Function in a separate file with the [`'use server'`](/reference/rsc/use-server) directive. It receives the previous state followed by the submitted `FormData`:
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js
 // actions.js
 'use server';
 
-<<<<<<< HEAD
-```js src/App.js
-import { useFormState } from "react-dom";
-import { signUpNewUser } from "./api";
-=======
 import { signUpNewUser } from './api.js';
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 export async function signup(previousState, formData) {
   const email = formData.get('email');
@@ -534,20 +438,6 @@ export async function signup(previousState, formData) {
   } catch (error) {
     return error.message;
   }
-<<<<<<< HEAD
-  const [message, formAction] = useFormState(signup, null);
-  return (
-    <>
-      <h1>Signup for my newsletter</h1>
-      <p>Signup with the same email twice to see an error</p>
-      <form action={formAction} id="signup-form">
-        <label htmlFor="email">Email: </label>
-        <input name="email" id="email" placeholder="react@example.com" />
-        <button>Sign up</button>
-        {!!message && <p>{message}</p>}
-      </form>
-    </>
-=======
 }
 ```
 
@@ -569,7 +459,6 @@ export default function Signup() {
       <button>Sign up</button>
       {message && <p>{message}</p>}
     </form>
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
   );
 }
 ```
@@ -625,23 +514,8 @@ export default function SaveButton() {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
-
 </Sandpack>
 
-<<<<<<< HEAD
-Learn more about updating state from a form action with the [`useFormState`](/reference/react-dom/hooks/useFormState) docs
-=======
 The call to `setTitle` [after `await`](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) needs another [`startTransition`](/reference/react/startTransition) to mark it as a Transition update.
 
 `saveAction` can also call a [Server Function](/reference/rsc/server-functions) and store its return value:
@@ -733,7 +607,6 @@ The examples above keep every submitted value by storing it before the reset. Yo
 </DeepDive>
 
 ---
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ### Handling multiple submission types {/*handling-multiple-submission-types*/}
 
@@ -787,18 +660,6 @@ export default function ArticleForm() {
       <button formAction={save}>Save draft</button>
     </form>
   );
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
 }
 ```
 

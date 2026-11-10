@@ -4,19 +4,16 @@ title: "Built-in React APIs"
 
 <Intro>
 
-In addition to [Hooks](/reference/react) and [Components](/reference/react/components), the `react` package exports a few other APIs that are useful for defining components. This page lists all the remaining modern React APIs.
+In addition to [Hooks](/reference/react/hooks) and [Components](/reference/react/components), the `react` package exports a few other APIs that are useful for defining components. This page lists all the remaining modern React APIs.
 
 </Intro>
 
 ---
 
 * [`createContext`](/reference/react/createContext) lets you define and provide context to the child components. Used with [`useContext`.](/reference/react/useContext)
-* [`forwardRef`](/reference/react/forwardRef) lets your component expose a DOM node as a ref to the parent. Used with [`useRef`.](/reference/react/useRef)
 * [`lazy`](/reference/react/lazy) lets you defer loading a component's code until it's rendered for the first time.
 * [`memo`](/reference/react/memo) lets your component skip re-renders with same props. Used with [`useMemo`](/reference/react/useMemo) and [`useCallback`.](/reference/react/useCallback)
 * [`startTransition`](/reference/react/startTransition) lets you mark a state update as non-urgent. Similar to [`useTransition`.](/reference/react/useTransition)
-<<<<<<< HEAD
-=======
 * [`addTransitionType`](/reference/react/addTransitionType) lets you specify the cause of a Transition. Used with [`startTransition`](/reference/react/startTransition) and [`<ViewTransition>`.](/reference/react/ViewTransition)
 * [`act`](/reference/react/act) lets you wrap renders and interactions in tests to ensure updates have processed before making assertions.
 * [`cache`](/reference/react/cache) lets you cache the result of a data fetch or computation.
@@ -43,4 +40,3 @@ function MessageComponent({ messagePromise }) {
   // ...
 }
 ```
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3

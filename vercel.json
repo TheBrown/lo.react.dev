@@ -13,8 +13,6 @@
       "source": "/learn/meet-the-team",
       "destination": "/community/team",
       "permanent": true
-<<<<<<< HEAD
-=======
     },
     {
       "source": "/link/warning-keys",
@@ -260,7 +258,6 @@
       "source": "/blog/2025/04/21/react-compiler-rc",
       "destination": "/blog/2025/10/07/react-compiler-1",
       "permanent": true
->>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
     }
   ],
   "headers": [
