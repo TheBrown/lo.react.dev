@@ -295,11 +295,7 @@ setPerson({
 });
 ```
 
-<<<<<<< HEAD
 ຕອນນີ້ form ເຮັດວຽກໄດ້!
-=======
-Now the form works!
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ສັງເກດວ່າທ່ານບໍ່ໄດ້ປະກາດຕົວແປ state ແຍກຕ່າງຫາກສຳລັບແຕ່ລະ field input. ສຳລັບ form ໃຫຍ່, ການເກັບກຸ່ມຂໍ້ມູນທັງໝົດໄວ້ໃນ object ຈະສະດວກກວ່າຫຼາຍ--ຖ້າວ່າທ່ານອັບເດດຂໍ້ມູນຢ່າງຖືກຕ້ອງ!
 
@@ -376,11 +372,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-<<<<<<< HEAD
 ຈື່ໄວ້ວ່າ syntax spread `...` ແມ່ນ "ຕື້ນ"--ເຊິ່ງຈະ copy ສະເພາະສິ່ງທີ່ຢູ່ເລິກລົງໄປລະດັບໜຶ່ງເທົ່ານັ້ນ. ສິ່ງນີ້ເຮັດໃຫ້ໄວ, ແຕ່ກໍໝາຍຄວາມວ່າຖ້າທ່ານຕ້ອງການອັບເດດ property ທີ່ຊ້ອນກັນ, ທ່ານຈະຕ້ອງໄດ້ໃຊ້ຫຼາຍກວ່າໜຶ່ງຄັ້ງ.
-=======
-Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <DeepDive>
 

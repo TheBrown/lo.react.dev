@@ -1,20 +1,13 @@
 ---
 title: useOptimistic
-canary: true
 ---
-
-<Canary>
-
-The `useOptimistic` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-
-</Canary>
 
 <Intro>
 
 `useOptimistic` is a React Hook that lets you optimistically update the UI.
 
 ```js
-  const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
+const [optimisticState, setOptimistic] = useOptimistic(value, reducer?);
 ```
 
 </Intro>
@@ -25,24 +18,18 @@ The `useOptimistic` Hook is currently only available in React's Canary and exper
 
 ## Reference {/*reference*/}
 
-### `useOptimistic(state, updateFn)` {/*use*/}
+### `useOptimistic(value, reducer?)` {/*useoptimistic*/}
 
-`useOptimistic` is a React Hook that lets you show a different state while an async action is underway. It accepts some state as an argument and returns a copy of that state that can be different during the duration of an async action such as a network request. You provide a function that takes the current state and the input to the action, and returns the optimistic state to be used while the action is pending.
-
-This state is called the "optimistic" state because it is usually used to immediately present the user with the result of performing an action, even though the action actually takes time to complete.
+Call `useOptimistic` at the top level of your component to create optimistic state for a value.
 
 ```js
 import { useOptimistic } from 'react';
 
-function AppContainer() {
-  const [optimisticState, addOptimistic] = useOptimistic(
-    state,
-    // updateFn
-    (currentState, optimisticValue) => {
-      // merge and return new state
-      // with optimistic value
-    }
-  );
+function MyComponent({name, todos}) {
+  const [optimisticAge, setOptimisticAge] = useOptimistic(28);
+  const [optimisticName, setOptimisticName] = useOptimistic(name);
+  const [optimisticTodos, setOptimisticTodos] = useOptimistic(todos, todoReducer);
+  // ...
 }
 ```
 
@@ -50,29 +37,117 @@ function AppContainer() {
 
 #### Parameters {/*parameters*/}
 
-* `state`: the value to be returned initially and whenever no action is pending.
-* `updateFn(currentState, optimisticValue)`: a function that takes the current state and the optimistic value passed to `addOptimistic` and returns the resulting optimistic state. It must be a pure function. `updateFn` takes in two parameters. The `currentState` and the `optimisticValue`. The return value will be the merged value of the `currentState` and `optimisticValue`.
-
+* `value`: The value returned when there are no pending Actions.
+* **optional** `reducer(currentState, action)`: The reducer function that specifies how the optimistic state gets updated. It must be pure, should take the current state and reducer action arguments, and should return the next optimistic state.
 
 #### Returns {/*returns*/}
 
-* `optimisticState`: The resulting optimistic state. It is equal to `state` unless an action is pending, in which case it is equal to the value returned by `updateFn`.
-* `addOptimistic`: `addOptimistic` is the dispatching function to call when you have an optimistic update. It takes one argument, `optimisticValue`, of any type and will call the `updateFn` with `state` and `optimisticValue`.
+`useOptimistic` returns an array with exactly two values:
+
+1. `optimisticState`: The current optimistic state. It is equal to `value` unless an Action is pending, in which case it is equal to the state returned by `reducer` (or the value passed to the set function if no `reducer` was provided).
+2. The [`set` function](#setoptimistic) that lets you update the optimistic state to a different value inside an Action.
+
+---
+
+### `set` functions, like `setOptimistic(optimisticState)` {/*setoptimistic*/}
+
+The `set` function returned by `useOptimistic` lets you update the state for the duration of an [Action](reference/react/useTransition#functions-called-in-starttransition-are-called-actions). You can pass the next state directly, or a function that calculates it from the previous state:
+
+```js
+const [optimisticLike, setOptimisticLike] = useOptimistic(false);
+const [optimisticSubs, setOptimisticSubs] = useOptimistic(subs);
+
+function handleClick() {
+  startTransition(async () => {
+    setOptimisticLike(true);
+    setOptimisticSubs(a => a + 1);
+    await saveChanges();
+  });
+}
+```
+
+#### Parameters {/*setoptimistic-parameters*/}
+
+* `optimisticState`: The value that you want the optimistic state to be during an [Action](reference/react/useTransition#functions-called-in-starttransition-are-called-actions). If you provided a `reducer` to `useOptimistic`, this value will be passed as the second argument to your reducer. It can be a value of any type.
+    * If you pass a function as `optimisticState`, it will be treated as an _updater function_. It must be pure, should take the pending state as its only argument, and should return the next optimistic state. React will put your updater function in a queue and re-render your component. During the next render, React will calculate the next state by applying the queued updaters to the previous state similar to [`useState` updaters](/reference/react/useState#setstate-parameters).
+
+#### Returns {/*setoptimistic-returns*/}
+
+`set` functions do not have a return value.
+
+#### Caveats {/*setoptimistic-caveats*/}
+
+* The `set` function must be called inside an [Action](reference/react/useTransition#functions-called-in-starttransition-are-called-actions). If you call the setter outside an Action, [React will show a warning](#an-optimistic-state-update-occurred-outside-a-transition-or-action) and the optimistic state will briefly render.
+
+<DeepDive>
+
+#### How optimistic state works {/*how-optimistic-state-works*/}
+
+`useOptimistic` lets you show a temporary value while an Action is in progress:
+
+```js
+const [value, setValue] = useState('a');
+const [optimistic, setOptimistic] = useOptimistic(value);
+
+startTransition(async () => {
+  setOptimistic('b');
+  const newValue = await saveChanges('b');
+  setValue(newValue);
+});
+```
+
+When the setter is called inside an Action, `useOptimistic` will trigger a re-render to show that state while the Action is in progress. Otherwise, the `value` passed to `useOptimistic` is returned.
+
+This state is called the "optimistic" because it is used to immediately present the user with the result of performing an Action, even though the Action actually takes time to complete.
+
+**How the update flows**
+
+1. **Update immediately**: When `setOptimistic('b')` is called, React immediately renders with `'b'`.
+
+2. **(Optional) await in Action**: If you await in the Action, React continues showing `'b'`.
+
+3. **Transition scheduled**: `setValue(newValue)` schedules an update to the real state.
+
+4. **(Optional) wait for Suspense**: If `newValue` suspends, React continues showing `'b'`.
+
+5. **Single render commit**: Finally, the `newValue` commits for `value` and `optimistic`.
+
+There's no extra render to "clear" the optimistic state. The optimistic and real state converge in the same render when the Transition completes.
+
+<Note>
+
+#### Optimistic state is temporary {/*optimistic-state-is-temporary*/}
+
+Optimistic state only renders while an Action is in progress, otherwise `value` is rendered.
+
+If `saveChanges` returned `'c'`, then both `value` and `optimistic` will be `'c'`, not `'b'`.
+
+</Note>
+
+**How the final state is determined**
+
+The `value` argument to `useOptimistic` determines what displays after the Action finishes. How this works depends on the pattern you use:
+
+- **Hardcoded values** like `useOptimistic(false)`: After the Action, `state` is still `false`, so the UI shows `false`. This is useful for pending states where you always start from `false`.
+
+- **Props or state passed in** like `useOptimistic(isLiked)`: If the parent updates `isLiked` during the Action, the new value is used after the Action completes. This is how the UI reflects the result of the Action.
+
+- **Reducer pattern** like `useOptimistic(items, fn)`: If `items` changes while the Action is pending, React re-runs your `reducer` with the new `items` to recalculate the state. This keeps your optimistic additions on top of the latest data.
+
+**What happens when the Action fails**
+
+If the Action throws an error, the Transition still ends, and React renders with whatever `value` currently is. Since the parent typically only updates `value` on success, a failure means `value` hasn't changed, so the UI shows what it showed before the optimistic update. You can catch the error to show a message to the user.
+
+</DeepDive>
 
 ---
 
 ## Usage {/*usage*/}
 
-### Optimistically updating forms {/*optimistically-updating-with-forms*/}
+### Adding optimistic state to a component {/*adding-optimistic-state-to-a-component*/}
 
-The `useOptimistic` Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
+Call `useOptimistic` at the top level of your component to declare one or more optimistic states.
 
-<<<<<<< HEAD
-For example, when a user types a message into the form and hits the "Send" button, the `useOptimistic` Hook allows the message to immediately appear in the list with a "Sending..." label, even before the message is actually sent to a server. This "optimistic" approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the "Sending..." label is removed.
-
-<Sandpack>
-
-=======
 ```js [[1, 4, "age"], [1, 5, "name"], [1, 6, "todos"], [2, 4, "optimisticAge"], [2, 5, "optimisticName"], [2, 6, "optimisticTodos"], [3, 4, "setOptimisticAge"], [3, 5, "setOptimisticName"], [3, 6, "setOptimisticTodos"], [4, 6, "reducer"]]
 import { useOptimistic } from 'react';
 
@@ -210,29 +285,12 @@ When creating an [Action prop](/reference/react/useTransition#exposing-action-pr
 Here's a button that shows "Submitting..." while the `action` is pending:
 
 <Sandpack>
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```js src/App.js
-import { useOptimistic, useState, useRef } from "react";
-import { deliverMessage } from "./actions.js";
+import { useState, startTransition } from 'react';
+import Button from './Button';
+import { submitForm } from './actions.js';
 
-<<<<<<< HEAD
-function Thread({ messages, sendMessage }) {
-  const formRef = useRef();
-  async function formAction(formData) {
-    addOptimisticMessage(formData.get("message"));
-    formRef.current.reset();
-    await sendMessage(formData);
-  }
-  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
-    messages,
-    (state, newMessage) => [
-      ...state,
-      {
-        text: newMessage,
-        sending: true
-      }
-=======
 export default function App() {
   const [count, setCount] = useState(0);
   return (
@@ -550,27 +608,30 @@ export default function TodoList({ todos, addTodoAction }) {
     (currentTodos, newTodo) => [
       ...currentTodos,
       { id: newTodo.id, text: newTodo.text, pending: true }
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
     ]
   );
 
+  function handleAddTodo(text) {
+    const newTodo = { id: crypto.randomUUID(), text: text };
+    startTransition(async () => {
+      addOptimisticTodo(newTodo);
+      await addTodoAction(newTodo);
+    });
+  }
+
   return (
-    <>
-      {optimisticMessages.map((message, index) => (
-        <div key={index}>
-          {message.text}
-          {!!message.sending && <small> (Sending...)</small>}
-        </div>
-      ))}
-      <form action={formAction} ref={formRef}>
-        <input type="text" name="message" placeholder="Hello!" />
-        <button type="submit">Send</button>
-      </form>
-    </>
+    <div>
+      <button onClick={() => handleAddTodo('New todo')}>Add Todo</button>
+      <ul>
+        {optimisticTodos.map(todo => (
+          <li key={todo.id}>
+            {todo.text} {todo.pending && "(Adding...)"}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
-<<<<<<< HEAD
-=======
 ```
 
 ```js src/actions.js hidden
@@ -605,43 +666,269 @@ This shopping cart example shows how to handle add and remove with a single redu
 import { useState, startTransition } from 'react';
 import { addToCart, removeFromCart, updateQuantity } from './actions.js';
 import ShoppingCart from './ShoppingCart';
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 export default function App() {
-  const [messages, setMessages] = useState([
-    { text: "Hello there!", sending: false, key: 1 }
-  ]);
-  async function sendMessage(formData) {
-    const sentMessage = await deliverMessage(formData.get("message"));
-    setMessages((messages) => [...messages, { text: sentMessage }]);
+  const [cart, setCart] = useState([]);
+
+  const cartActions = {
+    async add(item) {
+      await addToCart(item);
+      startTransition(() => {
+        setCart(current => {
+          const exists = current.find(i => i.id === item.id);
+          if (exists) {
+            return current.map(i =>
+              i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+            );
+          }
+          return [...current, { ...item, quantity: 1 }];
+        });
+      });
+    },
+    async remove(id) {
+      await removeFromCart(id);
+      startTransition(() => {
+        setCart(current => current.filter(item => item.id !== id));
+      });
+    },
+    async updateQuantity(id, quantity) {
+      await updateQuantity(id, quantity);
+      startTransition(() => {
+        setCart(current =>
+          current.map(item =>
+            item.id === id ? { ...item, quantity } : item
+          )
+        );
+      });
+    }
+  };
+
+  return <ShoppingCart cart={cart} cartActions={cartActions} />;
+}
+```
+
+```js src/ShoppingCart.js active
+import { useOptimistic, startTransition } from 'react';
+
+export default function ShoppingCart({ cart, cartActions }) {
+  const [optimisticCart, dispatch] = useOptimistic(
+    cart,
+    (currentCart, action) => {
+      switch (action.type) {
+        case 'add':
+          const exists = currentCart.find(item => item.id === action.item.id);
+          if (exists) {
+            return currentCart.map(item =>
+              item.id === action.item.id
+                ? { ...item, quantity: item.quantity + 1, pending: true }
+                : item
+            );
+          }
+          return [...currentCart, { ...action.item, quantity: 1, pending: true }];
+        case 'remove':
+          return currentCart.filter(item => item.id !== action.id);
+        case 'update_quantity':
+          return currentCart.map(item =>
+            item.id === action.id
+              ? { ...item, quantity: action.quantity, pending: true }
+              : item
+          );
+        default:
+          return currentCart;
+      }
+    }
+  );
+
+  function handleAdd(item) {
+    startTransition(async () => {
+      dispatch({ type: 'add', item });
+      await cartActions.add(item);
+    });
   }
-  return <Thread messages={messages} sendMessage={sendMessage} />;
+
+  function handleRemove(id) {
+    startTransition(async () => {
+      dispatch({ type: 'remove', id });
+      await cartActions.remove(id);
+    });
+  }
+
+  function handleUpdateQuantity(id, quantity) {
+    startTransition(async () => {
+      dispatch({ type: 'update_quantity', id, quantity });
+      await cartActions.updateQuantity(id, quantity);
+    });
+  }
+
+  const total = optimisticCart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  return (
+    <div>
+      <h2>Shopping Cart</h2>
+      <div style={{ marginBottom: 16 }}>
+        <button onClick={() => handleAdd({
+          id: 1, name: 'T-Shirt', price: 25
+        })}>
+          Add T-Shirt ($25)
+        </button>{' '}
+        <button onClick={() => handleAdd({
+          id: 2, name: 'Mug', price: 15
+        })}>
+          Add Mug ($15)
+        </button>
+      </div>
+      {optimisticCart.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <ul>
+          {optimisticCart.map(item => (
+            <li key={item.id}>
+              {item.name} - ${item.price} ×
+              {item.quantity}
+              {' '}= ${item.price * item.quantity}
+              <button
+                onClick={() => handleRemove(item.id)}
+                style={{ marginLeft: 8 }}
+              >
+                Remove
+              </button>
+              {item.pending && ' ...'}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p><strong>Total: ${total}</strong></p>
+    </div>
+  );
 }
 ```
 
-```js src/actions.js
-export async function deliverMessage(message) {
-  await new Promise((res) => setTimeout(res, 1000));
-  return message;
+```js src/actions.js hidden
+export async function addToCart(item) {
+  await new Promise((res) => setTimeout(res, 800));
 }
-```
 
+export async function removeFromCart(id) {
+  await new Promise((res) => setTimeout(res, 800));
+}
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
+export async function updateQuantity(id, quantity) {
+  await new Promise((res) => setTimeout(res, 800));
 }
 ```
 
 </Sandpack>
-<<<<<<< HEAD
-=======
+
+The reducer handles three `action` types (`add`, `remove`, `update_quantity`) and returns the new optimistic state for each. Each `action` sets a `pending: true` flag so you can show visual feedback while the [Server Function](/reference/rsc/server-functions) runs.
+
+---
+
+### Optimistic delete with error recovery {/*optimistic-delete-with-error-recovery*/}
+
+When deleting items optimistically, you should handle the case where the Action fails.
+
+This example shows how to display an error message when a delete fails, and the UI automatically rolls back to show the item again.
+
+<Sandpack>
+
+```js src/App.js
+import { useState, startTransition } from 'react';
+import { deleteItem } from './actions.js';
+import ItemList from './ItemList';
+
+export default function App() {
+  const [items, setItems] = useState([
+    { id: 1, name: 'Learn React' },
+    { id: 2, name: 'Build an app' },
+    { id: 3, name: 'Deploy to production' },
+  ]);
+
+  async function deleteAction(id) {
+    await deleteItem(id);
+    startTransition(() => {
+      setItems(current => current.filter(item => item.id !== id));
+    });
+  }
+
+  return <ItemList items={items} deleteAction={deleteAction} />;
+}
+```
+
+```js src/ItemList.js active
+import { useState, useOptimistic, startTransition } from 'react';
+
+export default function ItemList({ items, deleteAction }) {
+  const [error, setError] = useState(null);
+  const [optimisticItems, removeItem] = useOptimistic(
+    items,
+    (currentItems, idToRemove) =>
+      currentItems.map(item =>
+        item.id === idToRemove
+          ? { ...item, deleting: true }
+          : item
+      )
+  );
+
+  function handleDelete(id) {
+    setError(null);
+    startTransition(async () => {
+      removeItem(id);
+      try {
+        await deleteAction(id);
+      } catch (e) {
+        setError(e.message);
+      }
+    });
+  }
+
+  return (
+    <div>
+      <h2>Your Items</h2>
+      <ul>
+        {optimisticItems.map(item => (
+          <li
+            key={item.id}
+            style={{
+              opacity: item.deleting ? 0.5 : 1,
+              textDecoration: item.deleting ? 'line-through' : 'none',
+              transition: 'opacity 0.2s'
+            }}
+          >
+            {item.name}
+            <button
+              onClick={() => handleDelete(item.id)}
+              disabled={item.deleting}
+              style={{ marginLeft: 8 }}
+            >
+              {item.deleting ? 'Deleting...' : 'Delete'}
+            </button>
+          </li>
+        ))}
+      </ul>
+      {error && (
+        <p style={{ color: 'red', padding: 8, background: '#fee' }}>
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+```js src/actions.js hidden
+export async function deleteItem(id) {
+  await new Promise((res) => setTimeout(res, 1000));
+  // Item 3 always fails to demonstrate error recovery
+  if (id === 3) {
+    throw new Error('Cannot delete. Permission denied.');
+  }
+}
+```
+
+</Sandpack>
 
 Try deleting 'Deploy to production'. When the delete fails, the item automatically reappears in the list.
 
@@ -796,4 +1083,3 @@ const [optimistic, addOptimistic] = useOptimistic(
 ```
 
 Since each optimistic item has its own flag, you can show loading state for individual items.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a

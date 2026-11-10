@@ -1,0 +1,51 @@
+name: Lao Sync Sanity
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reject unresolved Git merge-conflict markers
+        shell: bash
+        run: |
+          if git grep -n -E '^(<<<<<<< |=======$|>>>>>>> )' -- .; then
+            echo "::error::Unresolved merge conflict markers detected"
+            exit 1
+          fi
+
+      - name: Preserve baseline Lao translation character counts
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const cp = require('child_process');
+          const paths = cp.execFileSync('git', [
+            'ls-tree','-r','--name-only','origin/main','--','src/content/learn/'
+          ], {encoding:'utf8'}).trim().split(String.fromCharCode(10)).filter(Boolean);
+          let scanned = 0;
+          for (const path of paths) {
+            const previous = cp.execFileSync('git', ['show', 'origin/main:' + path], {encoding:'utf8'});
+            const current = fs.readFileSync(path, 'utf8');
+            const count = s => (s.match(/[\u0e80-\u0eff]/g) || []).length;
+            const before = count(previous), after = count(current);
+            if (!before) continue;
+            scanned++;
+            console.log(path + ': baseline ' + before + ', current ' + after + ' Lao characters');
+            if (after < before) process.exitCode = 1;
+          }
+          console.log('Checked ' + scanned + ' previously translated Learn React pages');
+          NODE
+
+      - name: Parse key project JSON files
+        run: |
+          node -e "for (const p of ['package.json','src/sidebarBlog.json','src/sidebarReference.json','vercel.json']) JSON.parse(require('fs').readFileSync(p,'utf8'));"

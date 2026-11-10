@@ -361,11 +361,7 @@ Convention ແມ່ນການຕັ້ງຊື່ຄູ່ນີ້ວ່າ
 
 </Note>
 
-<<<<<<< HEAD
 Argument ດຽວສຳລັບ `useState` ແມ່ນ **ຄ່າເລີ່ມຕົ້ນ** ຂອງຕົວແປ state ຂອງທ່ານ. ໃນຕົວຢ່າງນີ້, ຄ່າເລີ່ມຕົ້ນຂອງ `index` ຖືກກຳນົດເປັນ `0` ດ້ວຍ `useState(0)`.
-=======
-The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ທຸກຄັ້ງທີ່ component ຂອງທ່ານ render, `useState` ຈະໃຫ້ array ທີມີສອງຄ່າ:
 
@@ -1450,11 +1446,7 @@ export default function FeedbackForm() {
 
 ລອງຍ້າຍການເອີ້ນໃຊ້ `useState` ຄັ້ງທີ່ສອງຫຼັງຈາກເງື່ອນໄຊ `if` ແລະ ສັງເກດວ່າສີ່ງນີ້ຈະຢຸດການເຮັດວຽກອີກຄັ້ງແນວໃດ.
 
-<<<<<<< HEAD
 ຫາກ linter ຂອງທ່ານ [ມີກຳນົດຄ່າສຳລັບ React ແລ້ວ](/learn/editor-setup#linting), ທ່ານຄວນເຫັນຂໍ້ຜິດພາດ lint ເມື່ອທ່ານເຮັດຜິດພາດແບບນີ້. ຖ້າທ່ານບໍ່ພົບຂໍ້ຜິດພາດເມື່ອທ່ານລອງຂຽນ code ທີ່ຜິດພາດໃນເຄື່ອງ, ທ່ານຕ້ອງຕັ້ງຄ່າ linting ສຳລັບ project ຂອງທ່ານ.
-=======
-If your linter is [configured for React](/learn/editor-setup#linting), you should see a lint error when you make a mistake like this. If you don't see an error when you try the faulty code locally, you need to set up linting for your project.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 </Solution>
 

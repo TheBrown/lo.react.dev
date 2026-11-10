@@ -1,13 +1,6 @@
 ---
 title: useFormStatus
-canary: true
 ---
-
-<Canary>
-
-The `useFormStatus` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-
-</Canary>
 
 <Intro>
 
@@ -61,7 +54,7 @@ In the above example, `Submit` uses this information to disable `<button>` press
 
 A `status` object with the following properties:
 
-* `pending`: A boolean. If `true`, this means the parent `<form>` is pending submission. Otherwise, `false`.
+* `pending`: A boolean. `true` while the parent `<form>` is submitting an Action or [running a Transition from `onSubmit`](#display-a-pending-state-with-an-onsubmit-handler). Otherwise, `false`.
 
 * `data`: An object implementing the [`FormData interface`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) that contains the data the parent `<form>` is submitting. If there is no active submission or no parent `<form>`, it will be `null`.
 
@@ -79,7 +72,7 @@ A `status` object with the following properties:
 
 ## Usage {/*usage*/}
 
-### Display a pending state during form submission {/*display-a-pending-state-during-form-submission*/}
+### Display a pending state with an `action` prop {/*display-a-pending-state-during-form-submission*/}
 To display a pending state while a form is submitting, you can call the `useFormStatus` Hook in a component rendered in a `<form>` and read the `pending` property returned.
 
 Here, we use the `pending` property to indicate the form is submitting.
@@ -117,23 +110,66 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
-<<<<<<< HEAD
+</Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
+---
+
+### Display a pending state with an `onSubmit` handler {/*display-a-pending-state-with-an-onsubmit-handler*/}
+
+If you need to handle form submission in an `onSubmit` event handler instead of passing a function to the [`<form action>` prop](/reference/react-dom/components/form#handle-form-submission-with-an-action-prop), call [`event.preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) and [start a Transition](/reference/react/startTransition) in the same event handler. A component inside the form can then use `useFormStatus` to read the pending state while the Action is running.
+
+<Sandpack>
+
+```js src/App.js
+import { startTransition } from 'react';
+import { useFormStatus } from 'react-dom';
+import { submitForm } from './submitForm.js';
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type='submit' disabled={pending}>
+      {pending ? 'Submitting...' : 'Submit'}
+    </button>
+  );
+}
+
+function Form({ submitAction }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    startTransition(async () => {
+      await submitAction(formData);
+    });
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name='query' />
+      <SubmitButton />
+    </form>
+  );
+}
+
+export default function App() {
+  async function submitAction(formData) {
+    await submitForm(formData);
+  }
+
+  return <Form submitAction={submitAction} />;
 }
 ```
-</Sandpack>  
-=======
+
+```js src/submitForm.js hidden
+export async function submitForm(formData) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+}
+```
+
 </Sandpack>
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
+
+Unlike a function passed to the `<form action>` prop, handling submission this way [does not automatically reset the form](/reference/react-dom/components/form#other-ways-to-control-form-resets).
+
 
 <Pitfall>
 
@@ -186,36 +222,16 @@ import {useFormStatus} from 'react-dom';
 export default function UsernameForm() {
   const {pending, data} = useFormStatus();
 
-  const [showSubmitted, setShowSubmitted] = useState(false);
-  const submittedUsername = useRef(null);
-  const timeoutId = useRef(null);
-
-  useMemo(() => {
-    if (pending) {
-      submittedUsername.current = data?.get('username');
-      if (timeoutId.current != null) {
-        clearTimeout(timeoutId.current);
-      }
-
-      timeoutId.current = setTimeout(() => {
-        timeoutId.current = null;
-        setShowSubmitted(false);
-      }, 2000);
-      setShowSubmitted(true);
-    }
-  }, [pending, data]);
-
   return (
-    <>
-      <label>Request a Username: </label><br />
-      <input type="text" name="username" />
+    <div>
+      <h3>Request a Username: </h3>
+      <input type="text" name="username" disabled={pending}/>
       <button type="submit" disabled={pending}>
-        {pending ? 'Submitting...' : 'Submit'}
+        Submit
       </button>
-      {showSubmitted ? (
-        <p>Submitted request for username: {submittedUsername.current}</p>
-      ) : null}
-    </>
+      <br />
+      <p>{data ? `Requesting ${data?.get("username")}...`: ''}</p>
+    </div>
   );
 }
 ```
@@ -223,10 +239,15 @@ export default function UsernameForm() {
 ```js src/App.js
 import UsernameForm from './UsernameForm';
 import { submitForm } from "./actions.js";
+import {useRef} from 'react';
 
 export default function App() {
+  const ref = useRef(null);
   return (
-    <form action={submitForm}>
+    <form ref={ref} action={async (formData) => {
+      await submitForm(formData);
+      ref.current.reset();
+    }}>
       <UsernameForm />
     </form>
   );
@@ -235,27 +256,25 @@ export default function App() {
 
 ```js src/actions.js hidden
 export async function submitForm(query) {
-    await new Promise((res) => setTimeout(res, 1000));
+    await new Promise((res) => setTimeout(res, 2000));
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
+```css
+p {
+    height: 14px;
+    padding: 0;
+    margin: 2px 0 0 0 ;
+    font-size: 14px
 }
+
+button {
+    margin-left: 2px;
+}
+
 ```
-<<<<<<< HEAD
-</Sandpack>  
-=======
 
 </Sandpack>
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ---
 

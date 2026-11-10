@@ -1374,8 +1374,8 @@ export default function App() {
 }
 ```
 
-```js src/ChatRoom.js active
-import { useState, useEffect } from 'react';
+```js {expectedErrors: {'react-compiler': [8]}} src/ChatRoom.js active
+import { useEffect } from 'react';
 
 export default function ChatRoom({ roomId, createConnection }) {
   useEffect(() => {
@@ -1473,7 +1473,7 @@ export default function App() {
 ```
 
 ```js src/ChatRoom.js active
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function ChatRoom({ roomId, createConnection }) {
   useEffect(() => {
@@ -1561,7 +1561,7 @@ export default function App() {
 ```
 
 ```js src/ChatRoom.js active
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   createEncryptedConnection,
   createUnencryptedConnection,

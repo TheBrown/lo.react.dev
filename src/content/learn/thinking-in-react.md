@@ -37,15 +37,9 @@ JSON API ສົ່ງບາງຂໍ້ມູນທີ່ມີລັກສະ�
 
 ຂຶ້ນນຳພື້ນຖານຂອງທ່ານ, ທ່ານສາມາດຄິດກ່ຽວກັບການແຍກ design ໄປເປັນ component ໄດ້ໃນຫຼາຍແບບ:
 
-<<<<<<< HEAD
 * **Programming**--ໃຊ້ເທັກນິກດຽວກັບສຳລັບການຕັດສິນໃຈວ່າທ່ານຄວນຈະສ້າງຟັງຊັ່ນໃໝ່ ຫຼື ອອບເຈັກ. ໜຶ່ງເທັກນິກແມ່ນ [ຫຼັກການໜຶ່ງຄວາມຮັບຜິດຊອບ](https://en.wikipedia.org/wiki/Single_responsibility_principle), ນັ້ນແຫຼະ, component ຄວນເຮັດແຕ່ສິ່ງດຽວເທົ່ານັ້ນ. ຖ້າມັນໃຫຍ່ຂຶ້ນ, ມັນຄວນຈະຖືກແຕກຍ່ອຍໄປເປັນສ່ວນນ້ອຍໆເປັນ subcomponent.
 * **CSS**--ຂຶ້ນກັບວ່າທ່ານຕ້ອງການສ້າງ class selector ສະເພາະ. (ເຖິງຢ່າງໃດກໍ່ຕາມ, component ມີລາຍລະອຽດນ້ອຍກວ່າໜ້ອຍໜຶ່ງ)
 * **Design**--ຂຶ້ນກັບວ່າທ່ານຕ້ອງການຈັດການຊັ້ນການອອກແບບແນວໃດ.
-=======
-* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
-* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
-* **Design**--consider how you would organize the design's layers.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ຖ້າ JSON ຂອງທ່ານມີໂຄ່ງສ້າງທີ່ດີ, ທ່ານຈະພົບວ່າມັນຈະ map ກັບ ໂຄ່ງສ້າງ component ຂອງ UI ທ່ານໄດ້ຢ່າງເປັນທຳມະຊາດ. ນັ້ນເປັນເພາະວ່າ UI ແລະ data model ມີສະຖາປັດຕະຍະກຳຂໍ້ມູນອັນດຽວກັນ, ໂຄງດຽວກັນ. ແຍກ UI ຂອງທ່ານໄປເປັນ component, ໂດຍທີ່ແຕ່ລະ component ຈະໄປກົງກັບຊີ້ນສ່ວນ data model ຂອງທ່ານ.
 
@@ -234,17 +228,10 @@ td {
 
 ມາເບິ່ງກັນໃນແຕ່ລະຂໍ້ອີກຄັ້ງ:
 
-<<<<<<< HEAD
 1. ລາຍການດັ່ງເດີ່ມຂອງ products ແມ່ນ **ຖືກສົ່ງເຂົ້າມາຜ່ານ props, ສະນັ້ນ ມັນຈິງບໍ່ແມ່ນ state.** 
 2. ຂໍ້ຄວາມຄົ້ນຫາເບິ່ງຄືຈະເປັນ state ໄດ້ເນື່ອງຈາກມັນມີການປ່ຽນແປງຕະຫຼອດເວລາ ແລະ ບໍ່ສາມາດຄຳນວນໄດ້ຈາກສິ່ງໃດ.
 3. ຄ່າຂອງ checkbox ເບິ່ງຄືຈະເປັນ state ໄດ້ເນື່ອງຈາກມັນມີການປ່ຽນແປງຕະຫຼອດເວລາ ແລະ ບໍ່ສາມາດຄຳນວນໄດ້ຈາກສິ່ງໃດ.
 4. ລາຍການຂອງ products ທີ filter ແລ້ວ **ບໍ່ແມ່ນ state ເພາະວ່າມັນສາມາດຄຳນວນໄດ້** ໂດຍນຳລາຍການ products ດັ່ງເດີມມາ filter ຕາມຂໍ້ຄວາມຄົ້ນຫາ ແລະ ຄ່າຂອງ checkbox.
-=======
-1. The original list of products is **passed in as props, so it's not state.**
-2. The search text seems to be state since it changes over time and can't be computed from anything.
-3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
-4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ນີ້ໝາຍຄວາມວ່າ ຂໍ້ຄວາມຄົ້ນຫາ ແລະ ຄ່າຂອງ checkbox ແມ່ນ state! ເກັ່ງຫຼາຍ!
 
@@ -278,7 +265,6 @@ Props ແລະ state ແມ່ນແຕກຕ່າງກັນ, ແຕ່ພ�
 
 ບາດນີ້ມາປັບໃສ່ວິທີການຂອງພວກເຮົາ: 
 
-<<<<<<< HEAD
 1. **ກຳນົດ component ທີ່ໃຊ້ state:**
     * `ProductTable` ຕ້ອງການ filter ລາຍການ product ອີງຕາມ state (ຂໍ້ຄວາມຄົ້ນຫາ ແລະ ຄ່າຂອງ checkbox). 
     * `SearchBar` ຕ້ອງການສະແດງ state ນັ້ນ (ຂໍ້ຄວາມຄົ້ນຫາ ແລະ ຄ່າຂອງ checkbox).
@@ -286,15 +272,6 @@ Props ແລະ state ແມ່ນແຕກຕ່າງກັນ, ແຕ່ພ�
 2. **ຕັດສິນໃຈວ່າ state ຈະຢູ່ໃສ**: ພວກເຮົາຈະຮັກສາ filter text ແລະ checked ເປັນ state ໃນ `FilterableProductTable`.
 
 ສະນັ້ນຄ່າຂອງ state ຈະຢູ່ໃນ `FilterableProductTable`. 
-=======
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
-    * `SearchBar` needs to display that state (search text and checkbox value).
-2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
-
-So the state values will live in `FilterableProductTable`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ເພີ່ມ state ໃສ່ໃນ component ດ້ວຍ [`useState()` Hook.](/reference/react/useState) Hooks ແມ່ນ function ພິເສດທີ່ທ່ານສາມາດ "ຂໍເຂົ້າໄປໃນ" React. ເພີ່ມຕົວແປ state 2 ອັນ ໃນດ້ານເທິງຂອງ `FilterableProductTable` ແລະ ລະບຸ state ເລີ່ມຕົ້ນ:
 
@@ -485,11 +462,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## Step 5: ເພີ່ມການໄຫຂໍ້ມູນແບບ inverse {/*step-5-add-inverse-data-flow*/}
 
-<<<<<<< HEAD
 ຕອນນີ້ແອັບຂອງທ່ານສະແດງຜົນຢ່າງຖືກຕ້ອງດ້ວຍ props ແລະ state ໄຫຼລົງມາຕາມລຳດັບຊັ້ນ. ແຕ່ຫາກຕ້ອງການປ່ຽນ state ໃຫ້ອີງຕາມ user input, ທ່ານຈະຕ້ອງສະໜັບສະໜູນການໄຫຼຂໍ້ມູນໄປວິທີອື່ນ: form component ທີ່ຢູ່ເລິກລົງໄປໃນລຳດັບຊັ້ນຈຳເປັນຕ້ອງໄດ້ອັບເດດ state ໃນ `FilterableProductTable`.
-=======
-Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 React ເຮັດໃຫ້ການໄຫຼຂໍ້ມູນນີ້ຊັດເຈນ, ແຕ່ຕ້ອງອາໄສການພິມທີ່ຫຼາຍກວ່າ two-way data binding ນ້ອຍໜຶ່ງ. ຖ້າທ່ານພະຍາຍາມພິມ ຫຼື ໝາຍຕິກໃສ່ກ່ອງໃນຕົວຢ່າງດ້ານເທິງ, ທ່ານຈະເຫັນວ່າ React ບໍ່ໄດ້ສົນໃຈຂໍ້ຄວາມທີ່ທ່ານປ້ອນ. ນີ້ແມ່ນຄວາມຕັ້ງໃຈ, ການຂຽນ `<input value={filterText} />`, ທ່ານໄດ້ຕັ້ງ prop `value` ຂອງ `input` ທີໃຫ້ເທົ່າກັບຄ່າ `filterText` ທີ່ສົ່ງ state ຜ່ານ `FilterableProductTable`ຕະຫຼອດ. ນັບແຕ່ `filterText` staet ຍັງບໍ່ຖືກຕັ້ງ, ຄ່າ input ແມ່ນບໍ່ມີການປ່ຽນແປງ.
 

@@ -264,19 +264,11 @@ body {
 
 ທ່ານຍັງສາມາດເຮັດຕາມບົດສອນນີ້ໂດຍໃຊ້ local development environment ຂອງທ່ານ. ເພື່ອປະຕິບັດ, ທ່ານຕ້ອງ:
 
-<<<<<<< HEAD
 1. ຕິດຕັ້ງ [Node.js](https://nodejs.org/en/)
 1. ຢູ່ໃນແທັບ CodeSandbox ທີ່ທ່ານເປີດກ່ອນໜ້ານີ້, ກົດປຸ່ມເບື້ອງຊ້າຍເທິງເພື່ອເປີດເມນູ, ຫຼັງຈາກນັ້ນ ເລືອກ  **File > Export to ZIP** ໃນເມນູນັ້ນເພື່ອດາວໂຫຼດ archive ໃນເຄື່ອງ
 1. Unzip archive ຟາຍ, ຈາກນັ້ນເປີດ ແລະ `cd` ເຂົ້າໄປໃນ directory ທີ່ທ່ານ unzip.
 1. ຕິດຕັ້ງ dependencies ດ້ວຍ `npm install`
 1. ແລ່ນ `npm start` ເພື່ອເລີ່ມ local server ແລະ ປະຕິບັດຕາມຄຳແນະນຳເພື່ອເບິ່ງ code ທີ່ເຮັດວຽກໃນບາວເຊີ
-=======
-1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
-1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
-1. Install the dependencies with `npm install`
-1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
->>>>>>> 2372ecf920ac4cda7c900f9ac7f9c0cd4284f281
 
 ຖ້າທ່ານຕິດບັນຫາ, ຢ່າປ່ອຍໃຫ້ມັນຢຸດທ່ານ! ເຮັດຢູ່ອອນໄລແທນ ແລະ ລອງຕັ້ງຄ່າໃນເຄື່ອງອີກພາຍຫຼັງ.
 
@@ -345,12 +337,8 @@ import './styles.css';
 import App from './App';
 ```
 
-<<<<<<< HEAD
 ແຖວທີ 1-5 ແມ່ນລວມສ່ວນທີ່ຈຳເປັນມາລວມກັນ:
 
-=======
-Lines 1-5 bring all the necessary pieces together:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 * React
 * Library React ເພື່ອສື່ສານກັບເວັບບາວເຊີ (React DOM)
@@ -569,11 +557,7 @@ export default function Board() {
 }
 ```
 
-<<<<<<< HEAD
 ສັງເກດເຫັນຄວາມແຕກຕ່າງຂອງບາວເຊີ `div` component `Board` ແລະ `Square` ຕ້ອງເລີ່ມຕົ້ນດ້ວຍໂຕພິມໃຫຍ່.
-=======
-Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ມາເບິ່ງ:
 
@@ -924,17 +908,16 @@ body {
 
 React DevTools ຊ່ວຍໃຫ້ທ່ານກວດ prop ແລະ state ຂອງ Component React ຂອງທ່ານ. ທ່ານສາມາດຫາແທັບ React DevTools ໃນດ້ານລຸ່ມຂອງສ່ວນ _browser_ ໃນ CodeSandbox:
 
-![React DevTools in CodeSandbox](../images/tutorial/codesandbox-devtools.png)
+After you install it, a new *Components* tab will appear in your browser Developer Tools for sites using React. If you're following along in CodeSandbox, you'd need to first open your sandbox preview in a new tab:
 
 ເພື່ອກວດແຕ່ລະ component ເທິງໜ້າຈໍ, ໃຊ້ປຸ່ມທີ່ຢູ່ມຸມຊ້າຍດ້ານເທິງຂອງ React DevTools:
 
-![Selecting components on the page with React DevTools](../images/tutorial/devtools-select.gif)
+Then, on the preview page, open your browser's DevTools and find the *Components* tab:
 
-<Note>
+![components tab](../images/tutorial/components-tab.png)
 
 ສຳລັບ local development, React DevTools ແມ່ນມີໃນ browser extension [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), ແລະ [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil). ຕິດຕັ້ງມັນ, ແລະ ແທັບ *Components*  ຈະສະແດງໃນ browser Developer Tools ສຳລັບໜ້າທີ່ໃຊ້ React.
 
-</Note>
 
 ## ເຮັດເກມໃຫ້ແລ້ວ {/*completing-the-game*/}
 
@@ -1116,11 +1099,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-<<<<<<< HEAD
 ຕອນນີ້ທ່ານຈະເຊື່ອມຕໍ່ prop `onSquareClick` ໃສ່ຟັງຊັ່ນໃນ component `Board` ທີ່ທ່ານໃສ່ຊື່ວ່າ `handleClick`. ໃນການເຊື່ອມຕໍ່ `onSquareClick` ກັບ `handleClick` ທ່ານຈະຕ້ອງສົ່ງຜ່ານຟັງຊັນໄປຫາ prop `onSquareClick` ຂອງ component `Square` ທຳອິດ:
-=======
-Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 ```js {7}
 export default function Board() {
@@ -2102,17 +2081,7 @@ export default function Game() {
 }
 ```
 
-<<<<<<< HEAD
 ທ່ານສາມາດເບິ່ງໄດ້ວ່າ code ຂອງທ່ານຄວນເປັນແນວໃດໃນດ້ານລຸ່ມນີ້. ສັງເກດວ່າທ່ານຄວນເຫັນຂໍ້ຜິດພາດໃນ console developer tools ທີ່ບອກວ່າ: ``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.`` ທ່ານຈະແປງຂໍ້ຜິດພາດນີ້ໃນຫົວຂໍ້ຕໍ່ໄປ.
-=======
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
-
-<ConsoleBlock level="warning">
-Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
-</ConsoleBlock>
-
-You'll fix this error in the next section.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Sandpack>
 

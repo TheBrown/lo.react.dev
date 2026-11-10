@@ -527,17 +527,11 @@ export default function TeaSet() {
 
 ## UI ຂອງທ່ານຄືກັບຕົ້ນໄມ້ {/*your-ui-as-a-tree*/}
 
-<<<<<<< HEAD
 React ໃຊ້ tree ເພື່ອສ້າງ model ຄວາມສຳພັນລະຫວ່າງ component ແລະ module.
 
 tree ການ render React ເປັນຕົວແທນຂອງຄວາມສຳພັນລະຫວ່າງ parent ແລະ child ລະຫວ່າງ component ຕ່າງໆ.
-=======
-React uses trees to model the relationships between components and modules.
 
-A React render tree is a representation of the parent and child relationship between components.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
-
-<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
+<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top of the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
 
 ຕົວຢ່າງ React render tree.
 
@@ -545,11 +539,7 @@ A React render tree is a representation of the parent and child relationship bet
 
 Component ທີ່ຢູ່ດ້ານເທິງສຸດຂອງ tree, ໃກ້ກັບ root component, ຖືເປັນສ່ວນປະກອບຂອງ top-level component. Component ທີ່ບໍ່ມີ child component ເປັນ leaf component. ການຈັດໝວດໝູ່ component ນີ້ເປັນປະໂຫຍດຫຼາຍສຳລັບການທຳຄວາມເຂົ້າໃຈການໄຫຼຂໍ້ມູນ ແລະ ປະສິດທິພາບການ render.
 
-<<<<<<< HEAD
 ການສ້າງ Model ຄວາມສຳພັນລະຫວ່າງ JavaScript module ເປັນອີກວິທີທີ່ມີປະໂຫຍດໃນການທຳຄວາມເຂົ້າໃຈແອັບຂອງທ່ານ. ພວກເຮົາເອີ້ນມັນວ່າເປັນ module dependency tree.
-=======
-Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">
 
@@ -557,11 +547,7 @@ Modelling the relationship between JavaScript modules is another useful way to u
 
 </Diagram>
 
-<<<<<<< HEAD
 Build tools ມັກໃຊ້ dependency tree ເພື່ອລວມ JavaScript Code ທີ່ກ່ຽວຂ້ອງທັງໝົດເພື່ອໃຫ້ client ດາວໂຫຼດ ແລະ render. Bundle ຂະໜາດໃຫຍ່ເຮັດໃຫ້ປະສົບການໃຊ້ງານຂອງຜູ້ໃຊ້ງານບໍ່ຄ່ອຍດີສຳລັບແອັບ React. ການທຳຄວາມເຂົ້າໃຈ module dependency tree ເປັນປະໂຫຍດຫຼາຍໃນການ debug ຫາບັນຫາດັ່ງກ່າວ.
-=======
-A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues.
->>>>>>> abe931a8cb3aee3e8b15ef7e187214789164162a
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 
