@@ -7,7 +7,7 @@ This repo contains the source code and documentation powering [lo.react.dev](htt
 ### Prerequisites
 
 1. Git
-1. Node: any 12.x version starting with v12.0.0 or greater
+1. Node.js 18.18 or later (required by the current Next.js 15 setup; an active LTS release such as Node.js 22 is recommended)
 1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
 1. A fork of the repo (for any contributions)
 1. A clone of the [lo.react.dev repo](https://github.com/reactjs/lo.react.dev) on your local machine
@@ -39,7 +39,7 @@ The documentation is divided into several sections with a different tone and pur
 1. Follow the ["Running locally"](#running-locally) instructions
 1. Save the files and check in the browser
   1. Changes to React components in `src` will hot-reload
-  1. Changes to markdown files in `content` will hot-reload
+  1. Changes to Markdown files in `src/content` will hot-reload
   1. If working with plugins, you may need to remove the `.cache` directory and restart the server
 
 ### Test the change
@@ -57,7 +57,14 @@ The documentation is divided into several sections with a different tone and pur
 
 ## Translation
 
-If you are interested in translating `lo.react.dev`, please see the current translation efforts [here](https://github.com/reactjs/lo.react.dev/issues/1).
+The Lao documentation is a community translation of [react.dev](https://react.dev/).
+
+- **Translation progress and page claims:** [Lao Translation Progress (#1)](https://github.com/reactjs/lo.react.dev/issues/1). Before starting, check the checklist and comments, and claim **one page at a time**.
+- **2026 maintainer restart:** See [MAINTAINER_RESTART_2026.md](./MAINTAINER_RESTART_2026.md) for a safe sequence to review accumulated source-sync pull requests, verify existing translations, refresh the progress tracker, and resume contributions.
+- **Upstream synchronization:** Auto-generated PRs from `react-translations-bot` are proposals, not a guarantee that translations remain correct. Review MDX/translation conflicts and run checks before merging.
+- **Content files:** Translation pages live under `src/content`. Preserve MDX components, executable examples, frontmatter, anchors, and links when translating.
+
+To check a contribution locally, run `yarn check-all` and `yarn build`. Note that `check-all` includes automatic formatting and lint fixes, so review the resulting diff before committing.
 
 ## License
 Content submitted to [lo.react.dev](https://lo.react.dev/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](https://github.com/reactjs/lo.react.dev/blob/main/LICENSE-DOCS.md) file.
