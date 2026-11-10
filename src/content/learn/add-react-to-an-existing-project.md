@@ -24,7 +24,7 @@ title: ເພີ່ມ React ໃສ່ Project ທີ່ມີຢູ່ແລ້
 2. **ກຳນົດ `/some-app` ເປັນ *base path*** ໃນການຕັ້ງຄ່າ framework ຂອງທ່ານ (ນີ້ແມ່ນວິທີການ: [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
 3. **ຕັ້ງຄ່າ server ຂອງທ່ານ ຫຼື proxy** ເພື່ອໃຫ້ request ທັງໝົດພາຍໃຕ້ `/some-app/` ນັ້ນ handle ໂດຍ React app ຂອງທ່ານ.
 
-ນີ້ເຮັດໃຫ້ໝັ້ນໃຈໄດ້ວ່າສ່ວນຂອງ React ຂອງແອັບທ່ານ [ຮັບຜົນປະໂຫຍດຈາກ best practices ທີ່ສຸດ](/learn/start-a-new-react-project#can-i-use-react-without-a-framework) ທີ່ຢູ່ໃນ framework ເຫຼົ່ານັ້ນ.
+ນີ້ເຮັດໃຫ້ໝັ້ນໃຈໄດ້ວ່າສ່ວນຂອງ React ຂອງແອັບທ່ານ [ຮັບຜົນປະໂຫຍດຈາກ best practices ທີ່ສຸດ](/learn/build-a-react-app-from-scratch) ທີ່ຢູ່ໃນ framework ເຫຼົ່ານັ້ນ.
 
 Framework ທີ່ໃຊ້ React ຈຳນວນຫຼາຍເປັນ full-stack ແລະ ເຮັດໃຫ້ React app ຂອງທ່ານໃຊ້ປະໂຫຍດຈາກ server. ເຖິງຢ່າງໃດກໍຕາມ, ທ່ານສາມາດໃຊ້ວິທີການດຽວກັນໄດ້ບໍ່ວ່າທ່ານຈະບໍ່ສາມາດ ຫຼື ບໍ່ຕ້ອງການທີ່ຈະແລ່ນ JavaScript ເທິງ server. ໃນກໍລະນີນີ້, serve HTML/CSS/JS export([`next export` output](https://nextjs.org/docs/advanced-features/static-html-export) ສຳລັບ Next.js, ຄ່າເລີ່ມຕົ້ນສຳລັບ Gatsby) ທີ່ `/some-app` ແທນ.
 
